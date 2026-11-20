@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Friendly Corner Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wdth,wght@62.5..100,500..900&family=Noto+Serif:wght@600;800&family=Noto+Sans+Georgian:wght@400;600;700&family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Layout idea: an Old Tbilisi carved wooden balcony framing a warm, single-column story. Single theme by choice. */
+  --vine: #24402e;
+  --plaster: #eef2ee;
+  --walnut: #5b3a22;
+  --pom: #a92a3c;
+  --text: #1c261f;
+  --soft: #55625a;
+  --display: "Noto Serif Georgian", "Noto Serif", Georgia, serif;
+  --body: "Noto Sans Georgian", "Noto Sans", system-ui, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--plaster); color: var(--text); font-family: var(--body); font-size: 17px; line-height: 1.6; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--pom); outline-offset: 3px; }
+.demo { background: #1c261f; color: #f2efe6; font-size: 13.5px; text-align: center; padding: 8px 16px; }
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+
+header { background: var(--vine); color: #f4f1e8; position: relative; }
+.balcony { height: 46px; background:
+  repeating-linear-gradient(90deg, transparent 0 14px, var(--walnut) 14px 20px),
+  linear-gradient(var(--walnut) 0 6px, transparent 6px 40px, var(--walnut) 40px);
+  border-top: 4px solid #3f2816; }
+.balcony.flip { transform: scaleY(-1); }
+.nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; gap: 12px; flex-wrap: wrap; }
+.brand { font-family: var(--display); font-weight: 800; font-size: 22px; letter-spacing: .01em; }
+.langs { display: flex; gap: 4px; }
+.langs button { font: 600 14px var(--body); background: transparent; color: #f4f1e8; border: 1.5px solid rgba(244,241,232,.5); border-radius: 4px; padding: 5px 10px; cursor: pointer; }
+.langs button[aria-pressed="true"] { background: #f4f1e8; color: var(--vine); border-color: #f4f1e8; }
+.hero { padding: 36px 0 54px; display: grid; grid-template-columns: 1.2fr .8fr; gap: 36px; align-items: end; }
+.hero h1 { font-family: var(--display); font-variation-settings: "wdth" 80; font-weight: 900; font-size: clamp(38px, 6vw, 66px); line-height: 1.04; margin: 0 0 16px; text-wrap: balance; }
+.hero p { margin: 0 0 24px; font-size: 18.5px; color: #d9e2d8; max-width: 30em; }
+.btns { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn { display: inline-block; padding: 13px 20px; border-radius: 5px; font-weight: 700; text-decoration: none; }
+.btn.red { background: var(--pom); color: #fff; }
+.btn.line { border: 2px solid #f4f1e8; color: #f4f1e8; }
+.score { background: #f4f1e8; color: var(--text); border-radius: 6px; padding: 20px; display: grid; gap: 4px; }
+.score .big { font-family: var(--display); font-weight: 900; font-size: 56px; line-height: 1; color: var(--vine); font-variant-numeric: tabular-nums; }
+.score small { color: var(--soft); font-size: 14.5px; }
+
+section { padding: 56px 0; }
+h2 { font-family: var(--display); font-variation-settings: "wdth" 85; font-weight: 800; font-size: clamp(28px, 4vw, 38px); line-height: 1.12; margin: 0 0 22px; color: var(--vine); text-wrap: balance; }
+.about { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+.about p { margin: 0 0 14px; max-width: 34em; }
+.menu { display: grid; gap: 0; border-top: 2px solid var(--walnut); }
+.dish { display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; padding: 14px 0; border-bottom: 1px dashed #b9a48f; }
+.dish b { font-size: 18px; }
+.dish span { color: var(--soft); font-size: 15px; grid-column: 1; }
+.dish i { font-style: normal; font-weight: 700; color: var(--pom); grid-row: 1; grid-column: 2; font-variant-numeric: tabular-nums; }
+.note { font-size: 14px; color: var(--soft); margin-top: 12px; }
+
+.visit { background: #fff; border-radius: 6px; border: 1px solid #d3dcd4; padding: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+td { padding: 6px 0; border-bottom: 1px solid #e3e9e3; }
+td:last-child { text-align: right; font-weight: 600; }
+tr.closed td:last-child { color: var(--pom); }
+tr.today td { color: var(--vine); font-weight: 700; }
+.contact { display: grid; gap: 12px; align-content: start; }
+.contact .k { font-size: 13.5px; color: var(--soft); font-weight: 600; letter-spacing: .04em; }
+.contact .v { font-size: 18px; }
+footer { background: var(--vine); color: #cfd9cf; font-size: 14px; }
+footer .wrap { padding-top: 18px; padding-bottom: 24px; }
+
+@media (max-width: 760px) {
+  .hero, .about, .visit { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="demo" data-i="demo"></div>
+<header>
+  <div class="wrap">
+    <div class="nav">
+      <div class="brand">Friendly Corner</div>
+      <div class="langs" role="group" aria-label="Language">
+        <button id="l-ka" data-l="ka" aria-pressed="true">ქარ</button>
+        <button id="l-en" data-l="en" aria-pressed="false">EN</button>
+        <button id="l-ru" data-l="ru" aria-pressed="false">RU</button>
+      </div>
+    </div>
+    <div class="hero">
+      <div>
+        <h1 data-i="h1"></h1>
+        <p data-i="lead"></p>
+        <div class="btns">
+          <a class="btn red" href="tel:+995597484947" data-i="call"></a>
+          <a class="btn line" href="https://www.google.com/maps/search/?api=1&query=Friendly+Corner+13+Grigol+Khandzteli+St+Tbilisi" data-i="map"></a>
+        </div>
+      </div>
+      <div class="score">
+        <div class="big">4.9</div>
+        <small data-i="score"></small>
+      </div>
+    </div>
+  </div>
+  <div class="balcony" aria-hidden="true"></div>
+</header>
+
+<main class="wrap">
+  <section class="about">
+    <div>
+      <h2 data-i="aboutH"></h2>
+    </div>
+    <div>
+      <p data-i="about1"></p>
+      <p data-i="about2"></p>
+    </div>
+  </section>
+
+  <section>
+    <h2 data-i="menuH"></h2>
+    <div class="menu">
+      <div class="dish"><b data-i="d0"></b><i>—</i><span data-i="d0s"></span></div>
+      <div class="dish"><b data-i="d1"></b><i>—</i><span data-i="d1s"></span></div>
+      <div class="dish"><b data-i="d2"></b><i>—</i><span data-i="d2s"></span></div>
+      <div class="dish"><b data-i="d3"></b><i>—</i><span data-i="d3s"></span></div>
+      <div class="dish"><b data-i="d5"></b><i>—</i><span data-i="d5s"></span></div>
+    </div>
+    <p class="note" data-i="menuNote"></p>
+  </section>
+
+  <section>
+    <h2 data-i="visitH"></h2>
+    <div class="visit">
+      <table aria-label="Hours">
+        <tbody id="hours"></tbody>
+      </table>
+      <div class="contact">
+        <div><div class="k" data-i="addrK"></div><div class="v" data-i="addr"></div></div>
+        <div><div class="k" data-i="phoneK"></div><div class="v">+995 597 48 49 47</div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="balcony flip" aria-hidden="true"></div>
+<footer><div class="wrap" data-i="foot"></div></footer>
+
+<script>
+const T = {
+  ka: {
+    demo: "დემო: მომზადებულია Friendly Corner-ისთვის Vitrina Studio-ს მიერ. ეს ოფიციალური საიტი არ არის.",
+    h1: "საცხობი და სახლური სამზარეულო ძველ თბილისში",
+    lead: "ახალი ცომეული ყოველ დილით, საუზმე, ცხელი ხაჭაპური და სტუმართმოყვარე მასპინძლები გრიგოლ ხანძთელის ქუჩაზე.",
+    call: "დარეკვა", map: "რუკაზე ნახვა",
+    score: "Google-ის 750-ზე მეტი შეფასების საშუალო",
+    aboutH: "მოდით როგორც სტუმარი, წადით როგორც მეგობარი",
+    about1: "Friendly Corner პატარა საოჯახო საცხობი და კაფეა ძველი თბილისის ცენტრში. ცომეულიც და კერძებიც ადგილზე, სახლურად მზადდება.",
+    about2: "დილით აქ საუზმობენ, შუადღით სადილობენ. ზაფხულში გარეთ ვსხდებით, ზამთარში ქვედა სართულზე თბილა.",
+    menuH: "რას ვურჩევთ სტუმრებს",
+    d0: "ახალი ცომეული და დესერტები", d0s: "ყოველდღე ადგილზე გამომცხვარი",
+    d1: "დიდი ქართული საუზმე", d1s: "საუზმის ნაკრები ყავით",
+    d2: "აჭარული ხაჭაპური", d2s: "ცხელი, ღუმლიდან პირდაპირ",
+    d3: "შაქშუკა ხორცით", d3s: "კვერცხი, პომიდორი და ნაზი ხორცი",
+    d4: "ხინკალი და მწვადი", d4s: "ქართული კლასიკა",
+    d5: "სახლის კონიაკი", d5s: "მასპინძლის რეცეპტით",
+    menuNote: "ფასები და სრული მენიუ დაემატება მფლობელთან შეთანხმების შემდეგ.",
+    visitH: "როდის და სად",
+    addrK: "მისამართი", addr: "გრიგოლ ხანძთელის ქ. 13, თბილისი",
+    phoneK: "ტელეფონი",
+    days: ["ორშაბათი","სამშაბათი","ოთხშაბათი","ხუთშაბათი","პარასკევი","შაბათი","კვირა"], closed: "დაკეტილია",
+    foot: "Friendly Corner · ძველი თბილისი · დემო საიტი"
+  },
+  en: {
+    demo: "Demo prepared for Friendly Corner by Vitrina Studio. This is not the official website.",
+    h1: "Bakery and home cooking in Old Tbilisi",
+    lead: "Fresh pastries every morning, breakfast, khachapuri straight from the oven and hosts who treat you like family, on Grigol Khandzteli Street.",
+    call: "Call us", map: "Open in Maps",
+    score: "Average of 750+ Google reviews",
+    aboutH: "Come as a guest, leave as a friend",
+    about1: "Friendly Corner is a small family bakery and café in the heart of Old Tbilisi. Pastries and dishes are made in-house, the way they are at home.",
+    about2: "Locals and travellers come for breakfast and stay for lunch. Sit outside in summer, or downstairs where it's cool and quiet.",
+    menuH: "What our guests order",
+    d0: "Fresh pastries and desserts", d0s: "Baked here every day",
+    d1: "Big Georgian breakfast", d1s: "Breakfast set with coffee",
+    d2: "Adjarian khachapuri", d2s: "Hot, straight from the oven",
+    d3: "Shakshuka with meat", d3s: "Eggs, tomato and tender meat",
+    d4: "Khinkali and mtsvadi", d4s: "Georgian classics",
+    d5: "House cognac", d5s: "The host's own recipe",
+    menuNote: "Prices and the full menu will be added together with the owner.",
+    visitH: "When and where",
+    addrK: "ADDRESS", addr: "13 Grigol Khandzteli St, Tbilisi",
+    phoneK: "PHONE",
+    days: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], closed: "Closed",
+    foot: "Friendly Corner · Old Tbilisi · demo site"
+  },
+  ru: {
+    demo: "Демо для Friendly Corner от Vitrina Studio. Это не официальный сайт.",
+    h1: "Пекарня и домашняя кухня в Старом Тбилиси",
+    lead: "Свежая выпечка каждое утро, завтраки, хачапури прямо из печи и радушные хозяева на улице Григола Ханзтели.",
+    call: "Позвонить", map: "Открыть на карте",
+    score: "Средняя оценка, более 750 отзывов в Google",
+    aboutH: "Приходите гостем, уходите другом",
+    about1: "Friendly Corner — маленькая семейная пекарня и кафе в центре Старого Тбилиси. Выпечку и блюда готовим сами, по-домашнему.",
+    about2: "Сюда приходят на завтрак и остаются на обед. Летом можно сидеть на улице, а внизу всегда прохладно и уютно.",
+    menuH: "Что заказывают гости",
+    d0: "Свежая выпечка и десерты", d0s: "Печём каждый день",
+    d1: "Большой грузинский завтрак", d1s: "Завтрак с кофе",
+    d2: "Хачапури по-аджарски", d2s: "Горячий, прямо из печи",
+    d3: "Шакшука с мясом", d3s: "Яйца, томаты и нежное мясо",
+    d4: "Хинкали и мцвади", d4s: "Грузинская классика",
+    d5: "Домашний коньяк", d5s: "По рецепту хозяина",
+    menuNote: "Цены и полное меню добавим вместе с владельцем.",
+    visitH: "Когда и где",
+    addrK: "АДРЕС", addr: "ул. Григола Ханзтели, 13, Тбилиси",
+    phoneK: "ТЕЛЕФОН",
+    days: ["Понедельник","Вторник","Среда","Четверг","Пятница","Суббота","Воскресенье"], closed: "Закрыто",
+    foot: "Friendly Corner · Старый Тбилиси · демо-сайт"
+  }
+};
+const HOURS = [null, "9:00–22:00", "9:00–22:00", "9:00–22:00", "9:00–20:00", "9:00–22:00", "9:00–22:00"];
+function setLang(l) {
+  const t = T[l];
+  document.documentElement.lang = l;
+  document.querySelectorAll("[data-i]").forEach(el => { el.textContent = t[el.dataset.i]; });
+  const today = (new Date().getDay() + 6) % 7;
+  document.getElementById("hours").innerHTML = t.days.map((d, i) =>
+    `<tr class="${HOURS[i] ? "" : "closed"} ${i === today ? "today" : ""}"><td>${d}</td><td>${HOURS[i] || t.closed}</td></tr>`).join("");
+  document.querySelectorAll(".langs button").forEach(b => b.setAttribute("aria-pressed", b.dataset.l === l));
+  try { localStorage.setItem("fc-lang", l); } catch (e) {}
+}
+document.querySelectorAll(".langs button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.l)));
+let start = "ka";
+try { start = localStorage.getItem("fc-lang") || "ka"; } catch (e) {}
+setLang(T[start] ? start : "ka");
+</script>
+</body>
+</html>
