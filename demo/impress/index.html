@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Impress Beauty Club Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wdth,wght@62.5..100,500..900&family=Noto+Serif:wght@600;800&family=Noto+Sans+Georgian:wght@400;600;700&family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Layout idea: a calm, polished salon — charcoal hero, dusty-rose accent, thin pinstripe band. Single theme by choice. */
+  --hero: #2a2427;
+  --hero-ink: #f7efee;
+  --hero-soft: #dccfd1;
+  --page: #f7f3f2;
+  --accent: #a8566a;
+  --line: #d8c8cb;
+  --text: #2a2226;
+  --soft: #6a5e62;
+  --display: "Noto Serif Georgian", "Noto Serif", Georgia, serif;
+  --body: "Noto Sans Georgian", "Noto Sans", system-ui, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--page); color: var(--text); font-family: var(--body); font-size: 17px; line-height: 1.6; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.demo { background: #15171a; color: #eeeae2; font-size: 13.5px; text-align: center; padding: 8px 16px; }
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+header { background: var(--hero); color: var(--hero-ink); }
+.band { height: 40px; background: repeating-linear-gradient(90deg, #2a2427 0 10px, #a8566a 10px 12px); }
+.nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; gap: 12px; flex-wrap: wrap; }
+.brand { font-family: var(--display); font-weight: 800; font-size: 22px; }
+.langs { display: flex; gap: 4px; }
+.langs button { font: 600 14px var(--body); background: transparent; color: var(--hero-ink); border: 1.5px solid currentColor; opacity: .75; border-radius: 4px; padding: 5px 10px; cursor: pointer; }
+.langs button[aria-pressed="true"] { opacity: 1; background: var(--hero-ink); color: var(--hero); border-color: var(--hero-ink); }
+.hero { padding: 36px 0 54px; display: grid; grid-template-columns: 1.2fr .8fr; gap: 36px; align-items: end; }
+.hero h1 { font-family: var(--display); font-variation-settings: "wdth" 80; font-weight: 900; font-size: clamp(38px, 6vw, 64px); line-height: 1.05; margin: 0 0 16px; text-wrap: balance; }
+.hero p { margin: 0 0 24px; font-size: 18.5px; color: var(--hero-soft); max-width: 30em; }
+.btns { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn { display: inline-block; padding: 13px 20px; border-radius: 5px; font-weight: 700; text-decoration: none; }
+.btn.main { background: var(--accent); color: #fff; }
+.btn.line { border: 2px solid var(--hero-ink); color: var(--hero-ink); }
+.score { background: var(--page); color: var(--text); border-radius: 6px; padding: 20px; display: grid; gap: 4px; }
+.score .big { font-family: var(--display); font-weight: 900; font-size: 56px; line-height: 1; color: var(--accent); font-variant-numeric: tabular-nums; }
+.score small { color: var(--soft); font-size: 14.5px; }
+section { padding: 56px 0; }
+h2 { font-family: var(--display); font-variation-settings: "wdth" 85; font-weight: 800; font-size: clamp(28px, 4vw, 38px); line-height: 1.12; margin: 0 0 22px; text-wrap: balance; }
+.about { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+.about p { margin: 0 0 14px; max-width: 34em; }
+.menu { border-top: 2px solid var(--text); }
+.dish { padding: 14px 0; border-bottom: 1px dashed var(--line); display: grid; gap: 2px; }
+.dish b { font-size: 18px; }
+.dish span { color: var(--soft); font-size: 15px; }
+.note { font-size: 14px; color: var(--soft); margin-top: 12px; }
+.visit { background: #fff; border-radius: 6px; border: 1px solid var(--line); padding: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+td { padding: 6px 0; border-bottom: 1px solid #ececec; }
+td:last-child { text-align: right; font-weight: 600; }
+tr.closed td:last-child { color: var(--accent); }
+tr.today td { font-weight: 700; }
+.contact { display: grid; gap: 12px; align-content: start; }
+.contact .k { font-size: 13.5px; color: var(--soft); font-weight: 600; letter-spacing: .04em; }
+.contact .v { font-size: 18px; }
+footer { background: var(--hero); color: var(--hero-soft); font-size: 14px; }
+footer .wrap { padding-top: 18px; padding-bottom: 24px; }
+@media (max-width: 760px) { .hero, .about, .visit { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="demo" data-i="demo"></div>
+<header>
+  <div class="wrap">
+    <div class="nav">
+      <div class="brand">Impress Beauty Club</div>
+      <div class="langs" role="group" aria-label="Language">
+        <button id="l-ka" data-l="ka" aria-pressed="true">ქარ</button>
+        <button id="l-en" data-l="en" aria-pressed="false">EN</button>
+        <button id="l-ru" data-l="ru" aria-pressed="false">RU</button>
+      </div>
+    </div>
+    <div class="hero">
+      <div>
+        <h1 data-i="h1"></h1>
+        <p data-i="lead"></p>
+        <div class="btns">
+          <a class="btn main" href="https://wa.me/995598298808" data-i="book"></a><a class="btn line" href="tel:+995598298808" data-i="call"></a><a class="btn line" href="https://www.google.com/maps/search/?api=1&query=Impress+Beauty+Club+Nino+Ramishvili+Tbilisi" data-i="map"></a>
+        </div>
+      </div>
+      <div class="score">
+        <div class="big">4.9</div>
+        <small data-i="score"></small>
+      </div>
+    </div>
+  </div>
+  <div class="band" aria-hidden="true"></div>
+</header>
+<main class="wrap">
+  <section class="about">
+    <div><h2 data-i="aboutH"></h2></div>
+    <div><p data-i="about1"></p><p data-i="about2"></p></div>
+  </section>
+  <section>
+    <h2 data-i="menuH"></h2>
+    <div class="menu"><div class="dish"><b data-i="d0"></b><span data-i="d0s"></span></div><div class="dish"><b data-i="d1"></b><span data-i="d1s"></span></div><div class="dish"><b data-i="d2"></b><span data-i="d2s"></span></div><div class="dish"><b data-i="d3"></b><span data-i="d3s"></span></div></div>
+    <p class="note" data-i="menuNote"></p>
+  </section>
+  <section>
+    <h2 data-i="visitH"></h2>
+    <div class="visit">
+      <table aria-label="Hours"><tbody id="hours"></tbody></table>
+      <div class="contact">
+        <div><div class="k" data-i="addrK"></div><div class="v" data-i="addr"></div></div>
+        <div><div class="k" data-i="phoneK"></div><div class="v">+995 598 29 88 08</div></div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap" data-i="foot"></div></footer>
+<script>
+const T = {
+ "ka": {
+  "closed": "დაკეტილია",
+  "allday": "24 საათი",
+  "addrK": "მისამართი",
+  "phoneK": "ტელეფონი",
+  "book": "ჩაეწერეთ WhatsApp-ით",
+  "call": "დარეკვა",
+  "map": "რუკაზე ნახვა",
+  "menuH": "სერვისები",
+  "menuNote": "ფასები და სრული სია დაემატება მფლობელთან შეთანხმების შემდეგ.",
+  "visitH": "როდის და სად",
+  "h1": "სილამაზის სალონი, სადაც თავს მშვიდად იგრძნობთ",
+  "lead": "მანიკური, პედიკური და თავის მოვლა სტილიან და სუფთა სივრცეში, ნინო რამიშვილის ქუჩაზე.",
+  "score": "Google-ის 240-ზე მეტი შეფასების საშუალო",
+  "aboutH": "დეტალებზე ზრუნვა, მისვლიდან წასვლამდე",
+  "about1": "Impress Beauty Club-ში სტუმარს ყავითა და ყურადღებით ხვდებიან. ოსტატები გისმენენ და დროს არ ზოგავენ, რომ შედეგი ზუსტად ისეთი იყოს, როგორიც გინდათ.",
+  "about2": "ადმინისტრატორი დაგეხმარებათ დროის შერჩევაშიც კი, როცა სალონი დატვირთულია. სალონში ხარისხიანი კოსმეტიკის არჩევანიც გელით.",
+  "d0": "მანიკური",
+  "d0s": "კლასიკური და გელით",
+  "d1": "პედიკური",
+  "d1s": "სრული მოვლა",
+  "d2": "ფრჩხილის დიზაინი",
+  "d2s": "თქვენი იდეით ან ოსტატის რჩევით",
+  "d3": "კოსმეტიკა",
+  "d3s": "მოვლის საშუალებები სალონში",
+  "addr": "ნინო რამიშვილის II ჩიხი, შენობა 2, თბილისი",
+  "foot": "Impress Beauty Club · დემო საიტი",
+  "days": [
+   "ორშაბათი",
+   "სამშაბათი",
+   "ოთხშაბათი",
+   "ხუთშაბათი",
+   "პარასკევი",
+   "შაბათი",
+   "კვირა"
+  ],
+  "demo": "დემო: მომზადებულია Impress Beauty Club-ისთვის Vitrina Studio-ს მიერ. ეს ოფიციალური საიტი არ არის."
+ },
+ "en": {
+  "closed": "Closed",
+  "allday": "Open 24 hours",
+  "addrK": "ADDRESS",
+  "phoneK": "PHONE",
+  "book": "Book on WhatsApp",
+  "call": "Call us",
+  "map": "Open in Maps",
+  "menuH": "Services",
+  "menuNote": "Prices and the full list will be added together with the owner.",
+  "visitH": "When and where",
+  "h1": "A beauty salon where you can truly relax",
+  "lead": "Manicure, pedicure and self-care in a stylish, spotless space on Nino Ramishvili Street.",
+  "score": "Average of 240+ Google reviews",
+  "aboutH": "Care in every detail, from arrival to goodbye",
+  "about1": "At Impress Beauty Club guests are welcomed with coffee and attention. The masters listen and take their time, so the result is exactly what you want.",
+  "about2": "The front desk will find you a slot even on busy days, and a selection of quality cosmetics awaits in the salon.",
+  "d0": "Manicure",
+  "d0s": "Classic and gel",
+  "d1": "Pedicure",
+  "d1s": "Complete care",
+  "d2": "Nail design",
+  "d2s": "Your idea or the master's suggestion",
+  "d3": "Cosmetics",
+  "d3s": "Care products in the salon",
+  "addr": "Building 2, Nino Ramishvili 2nd Dead End, Tbilisi",
+  "foot": "Impress Beauty Club · demo site",
+  "days": [
+   "Monday",
+   "Tuesday",
+   "Wednesday",
+   "Thursday",
+   "Friday",
+   "Saturday",
+   "Sunday"
+  ],
+  "demo": "Demo prepared for Impress Beauty Club by Vitrina Studio. This is not the official website."
+ },
+ "ru": {
+  "closed": "Закрыто",
+  "allday": "Круглосуточно",
+  "addrK": "АДРЕС",
+  "phoneK": "ТЕЛЕФОН",
+  "book": "Записаться в WhatsApp",
+  "call": "Позвонить",
+  "map": "Открыть на карте",
+  "menuH": "Услуги",
+  "menuNote": "Цены и полный список добавим вместе с владельцем.",
+  "visitH": "Когда и где",
+  "h1": "Салон красоты, где по-настоящему отдыхаешь",
+  "lead": "Маникюр, педикюр и уход в стильном и чистом пространстве на улице Нино Рамишвили.",
+  "score": "Средняя оценка, более 240 отзывов в Google",
+  "aboutH": "Забота в каждой детали",
+  "about1": "В Impress Beauty Club гостей встречают кофе и вниманием. Мастера слушают и не торопятся, чтобы результат был именно таким, как вы хотите.",
+  "about2": "Администратор найдёт время даже в загруженный день, а в салоне вас ждёт выбор качественной косметики.",
+  "d0": "Маникюр",
+  "d0s": "Классический и гель",
+  "d1": "Педикюр",
+  "d1s": "Полный уход",
+  "d2": "Дизайн ногтей",
+  "d2s": "Ваша идея или совет мастера",
+  "d3": "Косметика",
+  "d3s": "Средства ухода в салоне",
+  "addr": "Нино Рамишвили, 2-й тупик, здание 2, Тбилиси",
+  "foot": "Impress Beauty Club · демо-сайт",
+  "days": [
+   "Понедельник",
+   "Вторник",
+   "Среда",
+   "Четверг",
+   "Пятница",
+   "Суббота",
+   "Воскресенье"
+  ],
+  "demo": "Демо для Impress Beauty Club от Vitrina Studio. Это не официальный сайт."
+ }
+};
+const HOURS = ["10:00\u201320:00", "10:00\u201320:00", "10:00\u201320:00", "10:00\u201320:00", "10:00\u201320:00", "10:00\u201320:00", "10:00\u201320:00"];
+function setLang(l) {
+  const t = T[l];
+  document.documentElement.lang = l;
+  document.querySelectorAll("[data-i]").forEach(el => { if (t[el.dataset.i] !== undefined) el.textContent = t[el.dataset.i]; });
+  const today = (new Date().getDay() + 6) % 7;
+  document.getElementById("hours").innerHTML = t.days.map((d, i) =>
+    `<tr class="${HOURS[i] ? "" : "closed"} ${i === today ? "today" : ""}"><td>${d}</td><td>${HOURS[i] === "24" ? t.allday : (HOURS[i] || t.closed)}</td></tr>`).join("");
+  document.querySelectorAll(".langs button").forEach(b => b.setAttribute("aria-pressed", b.dataset.l === l));
+}
+document.querySelectorAll(".langs button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.l)));
+setLang("ka");
+</script>
+</body>
+</html>
