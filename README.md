@@ -1,2 +1,3 @@
-# vitrinastudio.ge
-Vitrina studio website
+# ვიტრინა
+
+vitrinastudio.ge — ვებსაიტები თბილისის მცირე ბიზნესებისთვის.
