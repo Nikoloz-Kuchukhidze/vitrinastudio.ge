@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Western Coffee Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wdth,wght@62.5..100,500..900&family=Noto+Serif:wght@600;800&family=Noto+Sans+Georgian:wght@400;600;700&family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Layout idea: a small neighbourhood coffee bar, espresso-dark hero with a crema stripe. Single theme by choice. */
+  --hero: #2a1d17;
+  --hero-ink: #f4ece2;
+  --hero-soft: #d8c9b9;
+  --page: #f3f0ea;
+  --accent: #2f6f66;
+  --line: #cfc6b8;
+  --text: #231a15;
+  --soft: #655a51;
+  --display: "Noto Serif Georgian", "Noto Serif", Georgia, serif;
+  --body: "Noto Sans Georgian", "Noto Sans", system-ui, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--page); color: var(--text); font-family: var(--body); font-size: 17px; line-height: 1.6; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.demo { background: #15171a; color: #eeeae2; font-size: 13.5px; text-align: center; padding: 8px 16px; }
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+header { background: var(--hero); color: var(--hero-ink); }
+.band { height: 40px; background: linear-gradient(#2a1d17 0 14px, #c89b6a 14px 20px, #e8d6bf 20px 26px, #2a1d17 26px); }
+.nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; gap: 12px; flex-wrap: wrap; }
+.brand { font-family: var(--display); font-weight: 800; font-size: 22px; }
+.langs { display: flex; gap: 4px; }
+.langs button { font: 600 14px var(--body); background: transparent; color: var(--hero-ink); border: 1.5px solid currentColor; opacity: .75; border-radius: 4px; padding: 5px 10px; cursor: pointer; }
+.langs button[aria-pressed="true"] { opacity: 1; background: var(--hero-ink); color: var(--hero); border-color: var(--hero-ink); }
+.hero { padding: 36px 0 54px; display: grid; grid-template-columns: 1.2fr .8fr; gap: 36px; align-items: end; }
+.hero h1 { font-family: var(--display); font-variation-settings: "wdth" 80; font-weight: 900; font-size: clamp(38px, 6vw, 64px); line-height: 1.05; margin: 0 0 16px; text-wrap: balance; }
+.hero p { margin: 0 0 24px; font-size: 18.5px; color: var(--hero-soft); max-width: 30em; }
+.btns { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn { display: inline-block; padding: 13px 20px; border-radius: 5px; font-weight: 700; text-decoration: none; }
+.btn.main { background: var(--accent); color: #fff; }
+.btn.line { border: 2px solid var(--hero-ink); color: var(--hero-ink); }
+.score { background: var(--page); color: var(--text); border-radius: 6px; padding: 20px; display: grid; gap: 4px; }
+.score .big { font-family: var(--display); font-weight: 900; font-size: 56px; line-height: 1; color: var(--accent); font-variant-numeric: tabular-nums; }
+.score small { color: var(--soft); font-size: 14.5px; }
+section { padding: 56px 0; }
+h2 { font-family: var(--display); font-variation-settings: "wdth" 85; font-weight: 800; font-size: clamp(28px, 4vw, 38px); line-height: 1.12; margin: 0 0 22px; text-wrap: balance; }
+.about { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+.about p { margin: 0 0 14px; max-width: 34em; }
+.menu { border-top: 2px solid var(--text); }
+.dish { padding: 14px 0; border-bottom: 1px dashed var(--line); display: grid; gap: 2px; }
+.dish b { font-size: 18px; }
+.dish span { color: var(--soft); font-size: 15px; }
+.note { font-size: 14px; color: var(--soft); margin-top: 12px; }
+.visit { background: #fff; border-radius: 6px; border: 1px solid var(--line); padding: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+td { padding: 6px 0; border-bottom: 1px solid #ececec; }
+td:last-child { text-align: right; font-weight: 600; }
+tr.closed td:last-child { color: var(--accent); }
+tr.today td { font-weight: 700; }
+.contact { display: grid; gap: 12px; align-content: start; }
+.contact .k { font-size: 13.5px; color: var(--soft); font-weight: 600; letter-spacing: .04em; }
+.contact .v { font-size: 18px; }
+footer { background: var(--hero); color: var(--hero-soft); font-size: 14px; }
+footer .wrap { padding-top: 18px; padding-bottom: 24px; }
+@media (max-width: 760px) { .hero, .about, .visit { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="demo" data-i="demo"></div>
+<header>
+  <div class="wrap">
+    <div class="nav">
+      <div class="brand">Western Coffee</div>
+      <div class="langs" role="group" aria-label="Language">
+        <button id="l-ka" data-l="ka" aria-pressed="true">ქარ</button>
+        <button id="l-en" data-l="en" aria-pressed="false">EN</button>
+        <button id="l-ru" data-l="ru" aria-pressed="false">RU</button>
+      </div>
+    </div>
+    <div class="hero">
+      <div>
+        <h1 data-i="h1"></h1>
+        <p data-i="lead"></p>
+        <div class="btns">
+          <a class="btn main" href="tel:+995593441362" data-i="call"></a><a class="btn line" href="https://www.google.com/maps/search/?api=1&query=Western+Coffee+2a+Veriko+Anjaparidze+St+Tbilisi" data-i="map"></a>
+        </div>
+      </div>
+      <div class="score">
+        <div class="big">5.0</div>
+        <small data-i="score"></small>
+      </div>
+    </div>
+  </div>
+  <div class="band" aria-hidden="true"></div>
+</header>
+<main class="wrap">
+  <section class="about">
+    <div><h2 data-i="aboutH"></h2></div>
+    <div><p data-i="about1"></p><p data-i="about2"></p></div>
+  </section>
+  <section>
+    <h2 data-i="menuH"></h2>
+    <div class="menu"><div class="dish"><b data-i="d0"></b><span data-i="d0s"></span></div><div class="dish"><b data-i="d1"></b><span data-i="d1s"></span></div><div class="dish"><b data-i="d2"></b><span data-i="d2s"></span></div></div>
+    <p class="note" data-i="menuNote"></p>
+  </section>
+  <section>
+    <h2 data-i="visitH"></h2>
+    <div class="visit">
+      <table aria-label="Hours"><tbody id="hours"></tbody></table>
+      <div class="contact">
+        <div><div class="k" data-i="addrK"></div><div class="v" data-i="addr"></div></div>
+        <div><div class="k" data-i="phoneK"></div><div class="v">+995 593 44 13 62</div></div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap" data-i="foot"></div></footer>
+<script>
+const T = {
+ "ka": {
+  "closed": "დაკეტილია",
+  "allday": "24 საათი",
+  "addrK": "მისამართი",
+  "phoneK": "ტელეფონი",
+  "h1": "კარგი ყავა და თბილი სამეზობლო კუთხე",
+  "lead": "პატარა ყავახანა ანჯაფარიძის ქუჩაზე, სადაც გემრიელი ყავა, მშვიდი გარემო და მეგობრული მასპინძლები გელოდებათ.",
+  "call": "დარეკვა",
+  "map": "რუკაზე ნახვა",
+  "score": "Google-ის 30 შეფასების საშუალო",
+  "aboutH": "ყავახანა, რომელსაც გულით მართავენ",
+  "about1": "Western Coffee ახალი ყავახანაა, რომელსაც წყვილი მართავს. აქ ყველა დეტალზეა ზრუნვა: ინტერიერი, მუსიკა და, რა თქმა უნდა, ყავა.",
+  "about2": "მოდით დილის ყავისთვის, მშვიდად სამუშაოდ ან მეგობართან შესახვედრად.",
+  "menuH": "რას გთავაზობთ",
+  "d0": "ყავა",
+  "d0s": "ესპრესო და რძიანი სასმელები",
+  "d1": "სენდვიჩები",
+  "d1s": "ყავასთან ერთად მსუბუქი კვება",
+  "d2": "მშვიდი გარემო",
+  "d2s": "კომფორტული ადგილები სამუშაოდ და შეხვედრისთვის",
+  "menuNote": "მენიუ და ფასები დაემატება მფლობელებთან შეთანხმების შემდეგ.",
+  "visitH": "როდის და სად",
+  "addr": "ვერიკო ანჯაფარიძის ქ. 2ა, თბილისი",
+  "foot": "Western Coffee · დემო საიტი",
+  "days": [
+   "ორშაბათი",
+   "სამშაბათი",
+   "ოთხშაბათი",
+   "ხუთშაბათი",
+   "პარასკევი",
+   "შაბათი",
+   "კვირა"
+  ],
+  "demo": "დემო: მომზადებულია Western Coffee-ისთვის Vitrina Studio-ს მიერ. ეს ოფიციალური საიტი არ არის."
+ },
+ "en": {
+  "closed": "Closed",
+  "allday": "Open 24 hours",
+  "addrK": "ADDRESS",
+  "phoneK": "PHONE",
+  "h1": "Good coffee and a warm neighbourhood corner",
+  "lead": "A small coffee shop on Anjaparidze Street with great coffee, a calm atmosphere and friendly hosts.",
+  "call": "Call us",
+  "map": "Open in Maps",
+  "score": "Average of 30 Google reviews",
+  "aboutH": "A coffee shop run from the heart",
+  "about1": "Western Coffee is a new coffee shop run by a couple. Every detail is cared for: the interior, the music and, of course, the coffee.",
+  "about2": "Come for your morning coffee, a quiet place to work, or to meet a friend.",
+  "menuH": "What we offer",
+  "d0": "Coffee",
+  "d0s": "Espresso and milk drinks",
+  "d1": "Sandwiches",
+  "d1s": "A light bite with your coffee",
+  "d2": "A calm place",
+  "d2s": "Comfortable seats to work or meet",
+  "menuNote": "Menu and prices will be added together with the owners.",
+  "visitH": "When and where",
+  "addr": "2a Veriko Anjaparidze St, Tbilisi",
+  "foot": "Western Coffee · demo site",
+  "days": [
+   "Monday",
+   "Tuesday",
+   "Wednesday",
+   "Thursday",
+   "Friday",
+   "Saturday",
+   "Sunday"
+  ],
+  "demo": "Demo prepared for Western Coffee by Vitrina Studio. This is not the official website."
+ },
+ "ru": {
+  "closed": "Закрыто",
+  "allday": "Круглосуточно",
+  "addrK": "АДРЕС",
+  "phoneK": "ТЕЛЕФОН",
+  "h1": "Хороший кофе и тёплое место по соседству",
+  "lead": "Маленькая кофейня на улице Анджапаридзе: вкусный кофе, спокойная атмосфера и дружелюбные хозяева.",
+  "call": "Позвонить",
+  "map": "Открыть на карте",
+  "score": "Средняя оценка 30 отзывов в Google",
+  "aboutH": "Кофейня, которую ведут с душой",
+  "about1": "Western Coffee — новая кофейня, которую ведёт семейная пара. Здесь продумана каждая деталь: интерьер, музыка и, конечно, кофе.",
+  "about2": "Заходите за утренним кофе, чтобы спокойно поработать или встретиться с другом.",
+  "menuH": "Что мы предлагаем",
+  "d0": "Кофе",
+  "d0s": "Эспрессо и напитки с молоком",
+  "d1": "Сэндвичи",
+  "d1s": "Лёгкий перекус к кофе",
+  "d2": "Спокойная атмосфера",
+  "d2s": "Удобные места для работы и встреч",
+  "menuNote": "Меню и цены добавим вместе с владельцами.",
+  "visitH": "Когда и где",
+  "addr": "ул. Верико Анджапаридзе, 2а, Тбилиси",
+  "foot": "Western Coffee · демо-сайт",
+  "days": [
+   "Понедельник",
+   "Вторник",
+   "Среда",
+   "Четверг",
+   "Пятница",
+   "Суббота",
+   "Воскресенье"
+  ],
+  "demo": "Демо для Western Coffee от Vitrina Studio. Это не официальный сайт."
+ }
+};
+const HOURS = ["9:00\u201319:00", "9:00\u201319:00", "9:00\u201319:00", "9:00\u201319:00", "9:00\u201319:00", "9:00\u201319:00", null];
+function setLang(l) {
+  const t = T[l];
+  document.documentElement.lang = l;
+  document.querySelectorAll("[data-i]").forEach(el => { if (t[el.dataset.i] !== undefined) el.textContent = t[el.dataset.i]; });
+  const today = (new Date().getDay() + 6) % 7;
+  document.getElementById("hours").innerHTML = t.days.map((d, i) =>
+    `<tr class="${HOURS[i] ? "" : "closed"} ${i === today ? "today" : ""}"><td>${d}</td><td>${HOURS[i] === "24" ? t.allday : (HOURS[i] || t.closed)}</td></tr>`).join("");
+  document.querySelectorAll(".langs button").forEach(b => b.setAttribute("aria-pressed", b.dataset.l === l));
+}
+document.querySelectorAll(".langs button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.l)));
+setLang("ka");
+</script>
+</body>
+</html>

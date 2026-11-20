@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Lavera Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wdth,wght@62.5..100,500..900&family=Noto+Serif:wght@600;800&family=Noto+Sans+Georgian:wght@400;600;700&family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Layout idea: a late-night dining room, string lights over a deep aubergine hero. Single theme by choice. */
+  --hero: #241b26;
+  --hero-ink: #f6efe6;
+  --hero-soft: #d9cdd6;
+  --page: #f6f2ef;
+  --accent: #9b2335;
+  --line: #cdbfc4;
+  --text: #231c22;
+  --soft: #62585f;
+  --display: "Noto Serif Georgian", "Noto Serif", Georgia, serif;
+  --body: "Noto Sans Georgian", "Noto Sans", system-ui, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--page); color: var(--text); font-family: var(--body); font-size: 17px; line-height: 1.6; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.demo { background: #15171a; color: #eeeae2; font-size: 13.5px; text-align: center; padding: 8px 16px; }
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+header { background: var(--hero); color: var(--hero-ink); }
+.band { height: 40px; background: radial-gradient(circle at 12px 18px, #f2c14e 0 4px, rgba(242,193,78,.25) 5px 8px, transparent 9px) 0 0/48px 40px, linear-gradient(#241b26, #241b26); }
+.nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; gap: 12px; flex-wrap: wrap; }
+.brand { font-family: var(--display); font-weight: 800; font-size: 22px; }
+.langs { display: flex; gap: 4px; }
+.langs button { font: 600 14px var(--body); background: transparent; color: var(--hero-ink); border: 1.5px solid currentColor; opacity: .75; border-radius: 4px; padding: 5px 10px; cursor: pointer; }
+.langs button[aria-pressed="true"] { opacity: 1; background: var(--hero-ink); color: var(--hero); border-color: var(--hero-ink); }
+.hero { padding: 36px 0 54px; display: grid; grid-template-columns: 1.2fr .8fr; gap: 36px; align-items: end; }
+.hero h1 { font-family: var(--display); font-variation-settings: "wdth" 80; font-weight: 900; font-size: clamp(38px, 6vw, 64px); line-height: 1.05; margin: 0 0 16px; text-wrap: balance; }
+.hero p { margin: 0 0 24px; font-size: 18.5px; color: var(--hero-soft); max-width: 30em; }
+.btns { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn { display: inline-block; padding: 13px 20px; border-radius: 5px; font-weight: 700; text-decoration: none; }
+.btn.main { background: var(--accent); color: #fff; }
+.btn.line { border: 2px solid var(--hero-ink); color: var(--hero-ink); }
+.score { background: var(--page); color: var(--text); border-radius: 6px; padding: 20px; display: grid; gap: 4px; }
+.score .big { font-family: var(--display); font-weight: 900; font-size: 56px; line-height: 1; color: var(--accent); font-variant-numeric: tabular-nums; }
+.score small { color: var(--soft); font-size: 14.5px; }
+section { padding: 56px 0; }
+h2 { font-family: var(--display); font-variation-settings: "wdth" 85; font-weight: 800; font-size: clamp(28px, 4vw, 38px); line-height: 1.12; margin: 0 0 22px; text-wrap: balance; }
+.about { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+.about p { margin: 0 0 14px; max-width: 34em; }
+.menu { border-top: 2px solid var(--text); }
+.dish { padding: 14px 0; border-bottom: 1px dashed var(--line); display: grid; gap: 2px; }
+.dish b { font-size: 18px; }
+.dish span { color: var(--soft); font-size: 15px; }
+.note { font-size: 14px; color: var(--soft); margin-top: 12px; }
+.visit { background: #fff; border-radius: 6px; border: 1px solid var(--line); padding: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+td { padding: 6px 0; border-bottom: 1px solid #ececec; }
+td:last-child { text-align: right; font-weight: 600; }
+tr.closed td:last-child { color: var(--accent); }
+tr.today td { font-weight: 700; }
+.contact { display: grid; gap: 12px; align-content: start; }
+.contact .k { font-size: 13.5px; color: var(--soft); font-weight: 600; letter-spacing: .04em; }
+.contact .v { font-size: 18px; }
+footer { background: var(--hero); color: var(--hero-soft); font-size: 14px; }
+footer .wrap { padding-top: 18px; padding-bottom: 24px; }
+@media (max-width: 760px) { .hero, .about, .visit { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="demo" data-i="demo"></div>
+<header>
+  <div class="wrap">
+    <div class="nav">
+      <div class="brand">Lavera</div>
+      <div class="langs" role="group" aria-label="Language">
+        <button id="l-ka" data-l="ka" aria-pressed="true">ქარ</button>
+        <button id="l-en" data-l="en" aria-pressed="false">EN</button>
+        <button id="l-ru" data-l="ru" aria-pressed="false">RU</button>
+      </div>
+    </div>
+    <div class="hero">
+      <div>
+        <h1 data-i="h1"></h1>
+        <p data-i="lead"></p>
+        <div class="btns">
+          <a class="btn main" href="tel:+995591008108" data-i="call"></a><a class="btn line" href="https://www.google.com/maps/search/?api=1&query=Lavera+46B+Iakob+Gogebashvili+St+Tbilisi" data-i="map"></a><a class="btn line" href="https://wolt.com/ka/geo/tbilisi/restaurant/lavera" data-i="wolt"></a>
+        </div>
+      </div>
+      <div class="score">
+        <div class="big">4.8</div>
+        <small data-i="score"></small>
+      </div>
+    </div>
+  </div>
+  <div class="band" aria-hidden="true"></div>
+</header>
+<main class="wrap">
+  <section class="about">
+    <div><h2 data-i="aboutH"></h2></div>
+    <div><p data-i="about1"></p><p data-i="about2"></p></div>
+  </section>
+  <section>
+    <h2 data-i="menuH"></h2>
+    <div class="menu"><div class="dish"><b data-i="d0"></b><span data-i="d0s"></span></div><div class="dish"><b data-i="d1"></b><span data-i="d1s"></span></div><div class="dish"><b data-i="d2"></b><span data-i="d2s"></span></div><div class="dish"><b data-i="d3"></b><span data-i="d3s"></span></div><div class="dish"><b data-i="d4"></b><span data-i="d4s"></span></div></div>
+    <p class="note" data-i="menuNote"></p>
+  </section>
+  <section>
+    <h2 data-i="visitH"></h2>
+    <div class="visit">
+      <table aria-label="Hours"><tbody id="hours"></tbody></table>
+      <div class="contact">
+        <div><div class="k" data-i="addrK"></div><div class="v" data-i="addr"></div></div>
+        <div><div class="k" data-i="phoneK"></div><div class="v">+995 591 00 81 08</div></div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap" data-i="foot"></div></footer>
+<script>
+const T = {
+ "ka": {
+  "closed": "დაკეტილია",
+  "allday": "24 საათი",
+  "addrK": "მისამართი",
+  "phoneK": "ტელეფონი",
+  "h1": "ქართული და ევროპული სამზარეულო, დღე და ღამე",
+  "lead": "მყუდრო რესტორანი გოგებაშვილის ქუჩაზე, რომელიც 24 საათი ღიაა: სადილისთვის, ვახშმისთვის თუ გვიანი ღამის ხაჭაპურისთვის.",
+  "call": "დარეკვა",
+  "map": "რუკაზე ნახვა",
+  "wolt": "Wolt-ით შეკვეთა",
+  "score": "Google-ის 680-ზე მეტი შეფასების საშუალო",
+  "aboutH": "როცა არ უნდა მოხვიდეთ, გელოდებით",
+  "about1": "Lavera ქართულ-ევროპული რესტორანია თბილი ინტერიერით და ყურადღებიანი მომსახურებით. ღიაა ყოველდღე, 24 საათის განმავლობაში.",
+  "about2": "მოდით მეგობრებთან ერთად სავახშმოდ, საქმიან სადილზე ან უბრალოდ მაშინ, როცა ქალაქში ყველაფერი უკვე დაკეტილია.",
+  "menuH": "რას ურჩევენ სტუმრები",
+  "d0": "ხბოს ხორცი ბროწეულით",
+  "d0s": "სტუმრების ფავორიტი",
+  "d1": "ოსური ხაჭაპური",
+  "d1s": "კარტოფილითა და ყველით",
+  "d2": "ქათმის მწვადი",
+  "d2s": "ნაზი და წვნიანი",
+  "d3": "ფხალის ასორტი",
+  "d3s": "ქართული სუფრის კლასიკა",
+  "d4": "ქართული ღვინო",
+  "d4s": "გირჩევთ კერძთან შესაფერისს",
+  "menuNote": "ფასები და სრული მენიუ დაემატება მფლობელთან შეთანხმების შემდეგ.",
+  "visitH": "როდის და სად",
+  "addr": "იაკობ გოგებაშვილის ქ. 46ბ, თბილისი",
+  "foot": "Lavera · დემო საიტი",
+  "days": [
+   "ორშაბათი",
+   "სამშაბათი",
+   "ოთხშაბათი",
+   "ხუთშაბათი",
+   "პარასკევი",
+   "შაბათი",
+   "კვირა"
+  ],
+  "demo": "დემო: მომზადებულია Lavera-ისთვის Vitrina Studio-ს მიერ. ეს ოფიციალური საიტი არ არის."
+ },
+ "en": {
+  "closed": "Closed",
+  "allday": "Open 24 hours",
+  "addrK": "ADDRESS",
+  "phoneK": "PHONE",
+  "h1": "Georgian and European cuisine, day and night",
+  "lead": "A cozy restaurant on Gogebashvili Street, open 24 hours: for lunch, dinner or a late-night khachapuri.",
+  "call": "Call us",
+  "map": "Open in Maps",
+  "wolt": "Order on Wolt",
+  "score": "Average of 680+ Google reviews",
+  "aboutH": "Whenever you come, we are open",
+  "about1": "Lavera is a Georgian-European restaurant with a warm interior and attentive service. Open every day, around the clock.",
+  "about2": "Come for dinner with friends, a business lunch, or simply when everything else in the city has already closed.",
+  "menuH": "What our guests recommend",
+  "d0": "Veal with pomegranate",
+  "d0s": "A guest favourite",
+  "d1": "Ossetian khachapuri",
+  "d1s": "With potato and cheese",
+  "d2": "Chicken mtsvadi",
+  "d2s": "Tender and juicy",
+  "d3": "Pkhali assortment",
+  "d3s": "A Georgian table classic",
+  "d4": "Georgian wine",
+  "d4s": "We will suggest the right one for your dish",
+  "menuNote": "Prices and the full menu will be added together with the owner.",
+  "visitH": "When and where",
+  "addr": "46B Iakob Gogebashvili St, Tbilisi",
+  "foot": "Lavera · demo site",
+  "days": [
+   "Monday",
+   "Tuesday",
+   "Wednesday",
+   "Thursday",
+   "Friday",
+   "Saturday",
+   "Sunday"
+  ],
+  "demo": "Demo prepared for Lavera by Vitrina Studio. This is not the official website."
+ },
+ "ru": {
+  "closed": "Закрыто",
+  "allday": "Круглосуточно",
+  "addrK": "АДРЕС",
+  "phoneK": "ТЕЛЕФОН",
+  "h1": "Грузинская и европейская кухня днём и ночью",
+  "lead": "Уютный ресторан на улице Гогебашвили, открыт круглосуточно: на обед, ужин или поздний хачапури.",
+  "call": "Позвонить",
+  "map": "Открыть на карте",
+  "wolt": "Заказать в Wolt",
+  "score": "Средняя оценка, более 680 отзывов в Google",
+  "aboutH": "Когда бы вы ни пришли, мы открыты",
+  "about1": "Lavera — грузинско-европейский ресторан с тёплым интерьером и внимательным сервисом. Открыт каждый день, круглосуточно.",
+  "about2": "Приходите на ужин с друзьями, деловой обед или просто тогда, когда в городе всё уже закрыто.",
+  "menuH": "Что советуют гости",
+  "d0": "Телятина с гранатом",
+  "d0s": "Любимое блюдо гостей",
+  "d1": "Осетинский хачапури",
+  "d1s": "С картофелем и сыром",
+  "d2": "Мцвади из курицы",
+  "d2s": "Нежный и сочный",
+  "d3": "Ассорти пхали",
+  "d3s": "Классика грузинского стола",
+  "d4": "Грузинское вино",
+  "d4s": "Подберём к вашему блюду",
+  "menuNote": "Цены и полное меню добавим вместе с владельцем.",
+  "visitH": "Когда и где",
+  "addr": "ул. Иакоба Гогебашвили, 46Б, Тбилиси",
+  "foot": "Lavera · демо-сайт",
+  "days": [
+   "Понедельник",
+   "Вторник",
+   "Среда",
+   "Четверг",
+   "Пятница",
+   "Суббота",
+   "Воскресенье"
+  ],
+  "demo": "Демо для Lavera от Vitrina Studio. Это не официальный сайт."
+ }
+};
+const HOURS = ["24", "24", "24", "24", "24", "24", "24"];
+function setLang(l) {
+  const t = T[l];
+  document.documentElement.lang = l;
+  document.querySelectorAll("[data-i]").forEach(el => { if (t[el.dataset.i] !== undefined) el.textContent = t[el.dataset.i]; });
+  const today = (new Date().getDay() + 6) % 7;
+  document.getElementById("hours").innerHTML = t.days.map((d, i) =>
+    `<tr class="${HOURS[i] ? "" : "closed"} ${i === today ? "today" : ""}"><td>${d}</td><td>${HOURS[i] === "24" ? t.allday : (HOURS[i] || t.closed)}</td></tr>`).join("");
+  document.querySelectorAll(".langs button").forEach(b => b.setAttribute("aria-pressed", b.dataset.l === l));
+}
+document.querySelectorAll(".langs button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.l)));
+setLang("ka");
+</script>
+</body>
+</html>
