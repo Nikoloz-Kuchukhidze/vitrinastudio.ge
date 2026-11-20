@@ -109,16 +109,17 @@ h2 { font-family: var(--display); font-variation-settings: "wdth" 75; font-weigh
 .who a.li:hover { color: var(--muted); }
 
 .contact { text-align: left; }
-.contact .box { background: var(--ink); color: var(--paper); border-radius: 6px; padding: 36px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 28px; align-items: center; }
-.contact .box h2 { color: var(--paper); margin-bottom: 10px; }
+.contact .box { background: #14202e; color: #f4f6f8; border: 1px solid rgba(255,255,255,.1); border-radius: 6px; padding: 36px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 28px; align-items: center; }
+.contact .box h2 { color: #f4f6f8; margin-bottom: 10px; }
 .contact .box p { margin: 0; opacity: .85; }
 .lines { display: grid; gap: 10px; font-size: 18px; font-variant-numeric: tabular-nums; }
 .lines a { text-decoration: none; border-bottom: 2px solid var(--glow); }
 .form { display: grid; gap: 6px; }
-.form label { font-size: 14px; font-weight: 700; opacity: .9; }
-.form input { font: inherit; font-size: 16px; padding: 11px 12px; border-radius: 5px; border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.08); color: inherit; margin-bottom: 6px; }
-.form input::placeholder { color: inherit; opacity: .5; }
-.form input:focus-visible { outline: 3px solid var(--glow); outline-offset: 1px; }
+.form label { font-size: 14px; font-weight: 700; }
+.form input { font: inherit; font-size: 16px; padding: 12px 14px; border-radius: 6px; border: 2px solid #d5dce4; background: #ffffff; color: #14202e; margin-bottom: 8px; }
+.form input:hover { border-color: #e9b52f; }
+.form input::placeholder { color: #7a8796; opacity: 1; }
+.form input:focus-visible { outline: 3px solid #e9b52f; outline-offset: 1px; border-color: #e9b52f; }
 .form button { margin-top: 6px; cursor: pointer; justify-self: start; }
 .form small { opacity: .7; font-size: 13px; }
 .form .msg { margin: 0; min-height: 1.4em; font-weight: 700; }
