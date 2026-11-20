@@ -7,247 +7,306 @@
 <title>Impress Beauty Club Demo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wdth,wght@62.5..100,500..900&family=Noto+Serif:wght@600;800&family=Noto+Sans+Georgian:wght@400;600;700&family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Noto+Sans+Georgian:wdth,wght@62.5..100,300..800&family=Noto+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  /* Layout idea: a calm, polished salon — charcoal hero, dusty-rose accent, thin pinstripe band. Single theme by choice. */
-  --hero: #2a2427;
-  --hero-ink: #f7efee;
-  --hero-soft: #dccfd1;
-  --page: #f7f3f2;
-  --accent: #a8566a;
-  --line: #d8c8cb;
-  --text: #2a2226;
-  --soft: #6a5e62;
-  --display: "Noto Serif Georgian", "Noto Serif", Georgia, serif;
+  /* Layout idea: the salon's own mark — espresso-brown disc, white condensed capitals, tracked "BEAUTY CLUB" — carried into a quiet, airy page with one booking card. Single theme by choice. */
+  --brown: #3b2d23;
+  --brown-2: #5a4636;
+  --sand: #efe7de;
+  --paper: #faf7f3;
+  --ink: #241b15;
+  --muted: #74675d;
+  --line: #e2d7cb;
+  --display: "Oswald", "Noto Sans Georgian", sans-serif;
+  --geo-display: "Noto Sans Georgian", "Noto Sans", sans-serif;
   --body: "Noto Sans Georgian", "Noto Sans", system-ui, sans-serif;
   color-scheme: light;
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; }
-body { background: var(--page); color: var(--text); font-family: var(--body); font-size: 17px; line-height: 1.6; }
+body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.65; font-weight: 400; }
 a { color: inherit; }
-a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
-.demo { background: #15171a; color: #eeeae2; font-size: 13.5px; text-align: center; padding: 8px 16px; }
-.wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
-header { background: var(--hero); color: var(--hero-ink); }
-.band { height: 40px; background: repeating-linear-gradient(90deg, #2a2427 0 10px, #a8566a 10px 12px); }
-.nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; gap: 12px; flex-wrap: wrap; }
-.brand { font-family: var(--display); font-weight: 800; font-size: 22px; }
+:focus-visible { outline: 3px solid var(--brown-2); outline-offset: 3px; }
+.demo { background: #16110d; color: #eee5db; font-size: 13px; text-align: center; padding: 8px 16px; }
+.wrap { max-width: 1060px; margin: 0 auto; padding: 0 22px; }
+
+.top { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; gap: 12px; flex-wrap: wrap; }
+.mark { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.disc { width: 46px; height: 46px; border-radius: 50%; background: var(--brown); color: #fff; display: grid; place-items: center; font-family: var(--display); font-size: 11px; letter-spacing: .04em; }
+.word { font-family: var(--display); font-weight: 500; font-size: 22px; letter-spacing: .06em; line-height: 1; }
+.word small { display: block; font-size: 9.5px; letter-spacing: .42em; font-weight: 400; color: var(--muted); margin-top: 4px; }
 .langs { display: flex; gap: 4px; }
-.langs button { font: 600 14px var(--body); background: transparent; color: var(--hero-ink); border: 1.5px solid currentColor; opacity: .75; border-radius: 4px; padding: 5px 10px; cursor: pointer; }
-.langs button[aria-pressed="true"] { opacity: 1; background: var(--hero-ink); color: var(--hero); border-color: var(--hero-ink); }
-.hero { padding: 36px 0 54px; display: grid; grid-template-columns: 1.2fr .8fr; gap: 36px; align-items: end; }
-.hero h1 { font-family: var(--display); font-variation-settings: "wdth" 80; font-weight: 900; font-size: clamp(38px, 6vw, 64px); line-height: 1.05; margin: 0 0 16px; text-wrap: balance; }
-.hero p { margin: 0 0 24px; font-size: 18.5px; color: var(--hero-soft); max-width: 30em; }
-.btns { display: flex; flex-wrap: wrap; gap: 10px; }
-.btn { display: inline-block; padding: 13px 20px; border-radius: 5px; font-weight: 700; text-decoration: none; }
-.btn.main { background: var(--accent); color: #fff; }
-.btn.line { border: 2px solid var(--hero-ink); color: var(--hero-ink); }
-.score { background: var(--page); color: var(--text); border-radius: 6px; padding: 20px; display: grid; gap: 4px; }
-.score .big { font-family: var(--display); font-weight: 900; font-size: 56px; line-height: 1; color: var(--accent); font-variant-numeric: tabular-nums; }
-.score small { color: var(--soft); font-size: 14.5px; }
-section { padding: 56px 0; }
-h2 { font-family: var(--display); font-variation-settings: "wdth" 85; font-weight: 800; font-size: clamp(28px, 4vw, 38px); line-height: 1.12; margin: 0 0 22px; text-wrap: balance; }
-.about { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
-.about p { margin: 0 0 14px; max-width: 34em; }
-.menu { border-top: 2px solid var(--text); }
-.dish { padding: 14px 0; border-bottom: 1px dashed var(--line); display: grid; gap: 2px; }
-.dish b { font-size: 18px; }
-.dish span { color: var(--soft); font-size: 15px; }
-.note { font-size: 14px; color: var(--soft); margin-top: 12px; }
-.visit { background: #fff; border-radius: 6px; border: 1px solid var(--line); padding: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.langs button { font: 500 13px var(--body); background: transparent; color: var(--ink); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; cursor: pointer; }
+.langs button[aria-pressed="true"] { background: var(--brown); color: #fff; border-color: var(--brown); }
+
+.hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: 44px; align-items: center; padding: 34px 0 64px; }
+.hero h1 { font-family: var(--geo-display); font-variation-settings: "wdth" 70; font-weight: 700; text-transform: uppercase; letter-spacing: .02em; font-size: clamp(34px, 5.2vw, 58px); line-height: 1.08; margin: 0 0 18px; text-wrap: balance; }
+html[lang="en"] .hero h1, html[lang="ru"] .hero h1 { font-family: var(--display); font-weight: 500; letter-spacing: .03em; }
+.hero p { color: var(--muted); font-size: 18px; max-width: 30em; margin: 0 0 26px; }
+.meta { display: flex; gap: 22px; flex-wrap: wrap; font-size: 14.5px; color: var(--muted); }
+.meta b { color: var(--ink); font-family: var(--display); font-weight: 500; font-size: 22px; margin-right: 6px; }
+
+.disc-hero { aspect-ratio: 1; max-width: 420px; width: 100%; justify-self: center; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #4a392c, var(--brown) 60%); color: #fff; display: grid; place-content: center; text-align: center; box-shadow: 0 30px 70px -30px rgba(59,45,35,.6); position: relative; }
+.disc-hero .big { font-family: var(--display); font-weight: 500; font-size: clamp(46px, 6.4vw, 78px); letter-spacing: .04em; line-height: .9; }
+.disc-hero .small { font-family: var(--display); font-size: 13px; letter-spacing: .6em; margin-top: 10px; padding-left: .6em; opacity: .85; }
+.disc-hero::after { content: ""; position: absolute; inset: 16px; border-radius: 50%; border: 1px solid rgba(255,255,255,.18); }
+
+section { padding: 64px 0; border-top: 1px solid var(--line); }
+.kick { font-family: var(--display); font-size: 12.5px; letter-spacing: .32em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
+h2 { font-family: var(--geo-display); font-variation-settings: "wdth" 75; font-weight: 700; text-transform: uppercase; font-size: clamp(26px, 3.6vw, 36px); line-height: 1.15; margin: 0 0 26px; text-wrap: balance; }
+html[lang="en"] h2, html[lang="ru"] h2 { font-family: var(--display); font-weight: 500; letter-spacing: .02em; }
+
+/* booking */
+.book { display: grid; grid-template-columns: .9fr 1.1fr; gap: 40px; align-items: start; }
+.book p.lead { color: var(--muted); margin: 0; max-width: 28em; }
+.card { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 26px; display: grid; gap: 18px; box-shadow: 0 18px 40px -28px rgba(59,45,35,.35); }
+.card fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 10px; }
+.card legend { font-weight: 600; font-size: 14.5px; margin-bottom: 8px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips label { position: relative; }
+.chips input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+.chips span { display: inline-block; padding: 9px 15px; border-radius: 999px; border: 1px solid var(--line); background: var(--paper); font-size: 14.5px; cursor: pointer; }
+.chips input:checked + span { background: var(--brown); border-color: var(--brown); color: #fff; }
+.chips input:focus-visible + span { outline: 3px solid var(--brown-2); outline-offset: 2px; }
+.card input[type="text"] { font: inherit; font-size: 16px; padding: 11px 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--paper); width: 100%; }
+.send { display: inline-flex; justify-content: center; align-items: center; gap: 10px; background: var(--brown); color: #fff; text-decoration: none; padding: 14px 20px; border-radius: 999px; font-weight: 600; }
+.send:hover { background: var(--brown-2); }
+.preview { font-size: 13.5px; color: var(--muted); background: var(--sand); border-radius: 10px; padding: 10px 12px; white-space: pre-line; }
+
+/* care */
+.services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.svc { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
+.svc h3 { font-family: var(--geo-display); font-variation-settings: "wdth" 80; font-size: 19px; margin: 0 0 6px; }
+.svc p { margin: 0; color: var(--muted); font-size: 15.5px; }
+
+.gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.ph { aspect-ratio: 3/4; border-radius: 14px; background: linear-gradient(160deg, #e9dfd4, #d9c9b8); display: grid; place-items: center; color: var(--brown-2); font-size: 13px; text-align: center; padding: 10px; }
+.ph:nth-child(2) { background: linear-gradient(160deg, #d8c6b4, #bfa58e); }
+.ph:nth-child(3) { background: linear-gradient(160deg, #5a4636, #3b2d23); color: #efe7de; }
+.ph:nth-child(4) { background: linear-gradient(160deg, #eadfd3, #cdb9a4); }
+
+.say { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.say div { border-left: 2px solid var(--brown); padding: 4px 0 4px 16px; }
+.say b { display: block; margin-bottom: 4px; }
+.say span { color: var(--muted); font-size: 15.5px; }
+
+.visit { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
 table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
-td { padding: 6px 0; border-bottom: 1px solid #ececec; }
-td:last-child { text-align: right; font-weight: 600; }
-tr.closed td:last-child { color: var(--accent); }
+td { padding: 7px 0; border-bottom: 1px solid var(--line); }
+td:last-child { text-align: right; }
 tr.today td { font-weight: 700; }
-.contact { display: grid; gap: 12px; align-content: start; }
-.contact .k { font-size: 13.5px; color: var(--soft); font-weight: 600; letter-spacing: .04em; }
-.contact .v { font-size: 18px; }
-footer { background: var(--hero); color: var(--hero-soft); font-size: 14px; }
-footer .wrap { padding-top: 18px; padding-bottom: 24px; }
-@media (max-width: 760px) { .hero, .about, .visit { grid-template-columns: 1fr; } }
+.addr .k { font-size: 12.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); font-family: var(--display); }
+.addr .v { font-size: 18px; margin-bottom: 14px; }
+footer { background: var(--brown); color: #e6dbcf; font-size: 14px; padding: 22px 0; }
+
+@media (max-width: 820px) {
+  .hero, .book, .visit { grid-template-columns: 1fr; }
+  .services, .say { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: repeat(2, 1fr); }
+  .disc-hero { max-width: 280px; }
+}
 </style>
 </head>
 <body>
 <div class="demo" data-i="demo"></div>
-<header>
-  <div class="wrap">
-    <div class="nav">
-      <div class="brand">Impress Beauty Club</div>
-      <div class="langs" role="group" aria-label="Language">
-        <button id="l-ka" data-l="ka" aria-pressed="true">ქარ</button>
-        <button id="l-en" data-l="en" aria-pressed="false">EN</button>
-        <button id="l-ru" data-l="ru" aria-pressed="false">RU</button>
+<div class="wrap">
+  <header class="top">
+    <a class="mark" href="#"><span class="disc" aria-hidden="true">IMP</span><span class="word">IMPRESS<small>BEAUTY CLUB</small></span></a>
+    <div class="langs" role="group" aria-label="Language">
+      <button data-l="ka" aria-pressed="true">ქარ</button>
+      <button data-l="en" aria-pressed="false">EN</button>
+      <button data-l="ru" aria-pressed="false">RU</button>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div>
+      <h1 data-i="h1"></h1>
+      <p data-i="lead"></p>
+      <div class="meta">
+        <span><b>4.9</b><span data-i="rating"></span></span>
+        <span><b>10–20</b><span data-i="daily"></span></span>
       </div>
     </div>
-    <div class="hero">
-      <div>
-        <h1 data-i="h1"></h1>
-        <p data-i="lead"></p>
-        <div class="btns">
-          <a class="btn main" href="https://wa.me/995598298808" data-i="book"></a><a class="btn line" href="tel:+995598298808" data-i="call"></a><a class="btn line" href="https://www.google.com/maps/search/?api=1&query=Impress+Beauty+Club+Nino+Ramishvili+Tbilisi" data-i="map"></a>
-        </div>
-      </div>
-      <div class="score">
-        <div class="big">4.9</div>
-        <small data-i="score"></small>
-      </div>
+    <div class="disc-hero" aria-hidden="true">
+      <div class="big">IMPRESS</div>
+      <div class="small">BEAUTY CLUB</div>
     </div>
   </div>
-  <div class="band" aria-hidden="true"></div>
-</header>
-<main class="wrap">
-  <section class="about">
-    <div><h2 data-i="aboutH"></h2></div>
-    <div><p data-i="about1"></p><p data-i="about2"></p></div>
+
+  <section id="book">
+    <div class="book">
+      <div>
+        <p class="kick" data-i="bookK"></p>
+        <h2 data-i="bookH"></h2>
+        <p class="lead" data-i="bookLead"></p>
+      </div>
+      <form class="card" id="bf" onsubmit="return false">
+        <fieldset>
+          <legend data-i="q1"></legend>
+          <div class="chips" id="svc"></div>
+        </fieldset>
+        <fieldset>
+          <legend data-i="q2"></legend>
+          <div class="chips" id="when"></div>
+        </fieldset>
+        <fieldset>
+          <legend><label for="nm" data-i="q3"></label></legend>
+          <input type="text" id="nm" autocomplete="given-name">
+        </fieldset>
+        <div class="preview" id="pv" aria-live="polite"></div>
+        <a class="send" id="go" href="#" target="_blank" rel="noopener"><span data-i="send"></span></a>
+      </form>
+    </div>
   </section>
+
   <section>
-    <h2 data-i="menuH"></h2>
-    <div class="menu"><div class="dish"><b data-i="d0"></b><span data-i="d0s"></span></div><div class="dish"><b data-i="d1"></b><span data-i="d1s"></span></div><div class="dish"><b data-i="d2"></b><span data-i="d2s"></span></div><div class="dish"><b data-i="d3"></b><span data-i="d3s"></span></div></div>
-    <p class="note" data-i="menuNote"></p>
+    <p class="kick" data-i="careK"></p>
+    <h2 data-i="careH"></h2>
+    <div class="services">
+      <div class="svc"><h3 data-i="s1"></h3><p data-i="s1d"></p></div>
+      <div class="svc"><h3 data-i="s2"></h3><p data-i="s2d"></p></div>
+      <div class="svc"><h3 data-i="s3"></h3><p data-i="s3d"></p></div>
+    </div>
   </section>
+
+  <section>
+    <p class="kick" data-i="galK"></p>
+    <h2 data-i="galH"></h2>
+    <div class="gallery">
+      <div class="ph" data-i="ph"></div><div class="ph" data-i="ph"></div><div class="ph" data-i="ph"></div><div class="ph" data-i="ph"></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="kick" data-i="sayK"></p>
+    <h2 data-i="sayH"></h2>
+    <div class="say">
+      <div><b data-i="r1"></b><span data-i="r1d"></span></div>
+      <div><b data-i="r2"></b><span data-i="r2d"></span></div>
+      <div><b data-i="r3"></b><span data-i="r3d"></span></div>
+    </div>
+  </section>
+
   <section>
     <h2 data-i="visitH"></h2>
     <div class="visit">
       <table aria-label="Hours"><tbody id="hours"></tbody></table>
-      <div class="contact">
-        <div><div class="k" data-i="addrK"></div><div class="v" data-i="addr"></div></div>
-        <div><div class="k" data-i="phoneK"></div><div class="v">+995 598 29 88 08</div></div>
+      <div class="addr">
+        <div class="k" data-i="addrK"></div><div class="v" data-i="addr"></div>
+        <div class="k" data-i="phoneK"></div><div class="v">+995 598 29 88 08</div>
+        <a class="send" href="https://www.google.com/maps/search/?api=1&query=Impress+Beauty+Club+Nino+Ramishvili+Tbilisi" target="_blank" rel="noopener"><span data-i="map"></span></a>
       </div>
     </div>
   </section>
-</main>
+</div>
 <footer><div class="wrap" data-i="foot"></div></footer>
+
 <script>
+const PHONE = "995598298808";
 const T = {
- "ka": {
-  "closed": "დაკეტილია",
-  "allday": "24 საათი",
-  "addrK": "მისამართი",
-  "phoneK": "ტელეფონი",
-  "book": "ჩაეწერეთ WhatsApp-ით",
-  "call": "დარეკვა",
-  "map": "რუკაზე ნახვა",
-  "menuH": "სერვისები",
-  "menuNote": "ფასები და სრული სია დაემატება მფლობელთან შეთანხმების შემდეგ.",
-  "visitH": "როდის და სად",
-  "h1": "სილამაზის სალონი, სადაც თავს მშვიდად იგრძნობთ",
-  "lead": "მანიკური, პედიკური და თავის მოვლა სტილიან და სუფთა სივრცეში, ნინო რამიშვილის ქუჩაზე.",
-  "score": "Google-ის 240-ზე მეტი შეფასების საშუალო",
-  "aboutH": "დეტალებზე ზრუნვა, მისვლიდან წასვლამდე",
-  "about1": "Impress Beauty Club-ში სტუმარს ყავითა და ყურადღებით ხვდებიან. ოსტატები გისმენენ და დროს არ ზოგავენ, რომ შედეგი ზუსტად ისეთი იყოს, როგორიც გინდათ.",
-  "about2": "ადმინისტრატორი დაგეხმარებათ დროის შერჩევაშიც კი, როცა სალონი დატვირთულია. სალონში ხარისხიანი კოსმეტიკის არჩევანიც გელით.",
-  "d0": "მანიკური",
-  "d0s": "კლასიკური და გელით",
-  "d1": "პედიკური",
-  "d1s": "სრული მოვლა",
-  "d2": "ფრჩხილის დიზაინი",
-  "d2s": "თქვენი იდეით ან ოსტატის რჩევით",
-  "d3": "კოსმეტიკა",
-  "d3s": "მოვლის საშუალებები სალონში",
-  "addr": "ნინო რამიშვილის II ჩიხი, შენობა 2, თბილისი",
-  "foot": "Impress Beauty Club · დემო საიტი",
-  "days": [
-   "ორშაბათი",
-   "სამშაბათი",
-   "ოთხშაბათი",
-   "ხუთშაბათი",
-   "პარასკევი",
-   "შაბათი",
-   "კვირა"
-  ],
-  "demo": "დემო: მომზადებულია Impress Beauty Club-ისთვის Vitrina Studio-ს მიერ. ეს ოფიციალური საიტი არ არის."
+ ka: {
+  demo: "დემო: მომზადებულია Impress Beauty Club-ისთვის Vitrina Studio-ს მიერ. ეს ოფიციალური საიტი არ არის.",
+  h1: "მოდით მოსავლელად, დარჩით დასასვენებლად",
+  lead: "სტილიანი, სუფთა და მყუდრო სალონი ვაკეში, სადაც ყავით გხვდებიან და ყველა დეტალზე ზრუნავენ.",
+  rating: "240+ შეფასება Google-ზე", daily: "ყოველდღე",
+  bookK: "ჩაწერა", bookH: "ჩაეწერეთ 30 წამში",
+  bookLead: "აირჩიეთ სერვისი და მოსახერხებელი დრო. WhatsApp-ში მზა შეტყობინება გაიხსნება, ადმინისტრატორი კი დროს დაგიდასტურებთ.",
+  q1: "რა სერვისი გინდათ?", q2: "როდის გირჩევნიათ?", q3: "თქვენი სახელი",
+  svc: ["მანიკური", "პედიკური", "მანიკური და პედიკური", "ფრჩხილის დიზაინი"],
+  when: ["დღეს", "ხვალ", "ამ კვირაში", "შაბათ-კვირას"],
+  msg: (s, w, n) => `გამარჯობა! მინდა ჩავეწერო: ${s}, ${w}.${n ? " სახელი: " + n + "." : ""}`,
+  pick: "აირჩიეთ სერვისი და დრო", send: "გაგზავნა WhatsApp-ში",
+  careK: "მოვლა", careH: "რას გთავაზობთ",
+  s1: "მანიკური", s1d: "ზუსტი, სუფთა ნამუშევარი და ფერი, რომელიც დიდხანს ძლებს.",
+  s2: "პედიკური", s2d: "სრული მოვლა მშვიდ გარემოში, ჩქარობის გარეშე.",
+  s3: "კოსმეტიკა სალონში", s3d: "მოვლის საშუალებების არჩევანი, რომ შედეგი სახლშიც შეინარჩუნოთ.",
+  galK: "ნამუშევრები", galH: "თქვენი ნამუშევრების გალერეა", ph: "აქ თქვენი ფოტო",
+  sayK: "სტუმრები", sayH: "რას ამბობენ ჩვენზე",
+  r1: "ინტერიერი", r1d: "სტუმრები ხშირად ახსენებენ ლამაზ, სტილიან და დამამშვიდებელ სივრცეს.",
+  r2: "სისუფთავე", r2d: "ყველაფერი სუფთა და მოწესრიგებულია, რაც სალონში ყველაზე მნიშვნელოვანია.",
+  r3: "ყურადღება", r3d: "ყავა, სასმელები და ოსტატები, რომლებიც ყველა სურვილს ისმენენ.",
+  visitH: "როდის და სად", addrK: "მისამართი", addr: "ნინო რამიშვილის II ჩიხი, შენობა 2, თბილისი", phoneK: "ტელეფონი", map: "რუკაზე ნახვა",
+  days: ["ორშაბათი","სამშაბათი","ოთხშაბათი","ხუთშაბათი","პარასკევი","შაბათი","კვირა"],
+  foot: "Impress Beauty Club · დემო საიტი"
  },
- "en": {
-  "closed": "Closed",
-  "allday": "Open 24 hours",
-  "addrK": "ADDRESS",
-  "phoneK": "PHONE",
-  "book": "Book on WhatsApp",
-  "call": "Call us",
-  "map": "Open in Maps",
-  "menuH": "Services",
-  "menuNote": "Prices and the full list will be added together with the owner.",
-  "visitH": "When and where",
-  "h1": "A beauty salon where you can truly relax",
-  "lead": "Manicure, pedicure and self-care in a stylish, spotless space on Nino Ramishvili Street.",
-  "score": "Average of 240+ Google reviews",
-  "aboutH": "Care in every detail, from arrival to goodbye",
-  "about1": "At Impress Beauty Club guests are welcomed with coffee and attention. The masters listen and take their time, so the result is exactly what you want.",
-  "about2": "The front desk will find you a slot even on busy days, and a selection of quality cosmetics awaits in the salon.",
-  "d0": "Manicure",
-  "d0s": "Classic and gel",
-  "d1": "Pedicure",
-  "d1s": "Complete care",
-  "d2": "Nail design",
-  "d2s": "Your idea or the master's suggestion",
-  "d3": "Cosmetics",
-  "d3s": "Care products in the salon",
-  "addr": "Building 2, Nino Ramishvili 2nd Dead End, Tbilisi",
-  "foot": "Impress Beauty Club · demo site",
-  "days": [
-   "Monday",
-   "Tuesday",
-   "Wednesday",
-   "Thursday",
-   "Friday",
-   "Saturday",
-   "Sunday"
-  ],
-  "demo": "Demo prepared for Impress Beauty Club by Vitrina Studio. This is not the official website."
+ en: {
+  demo: "Demo prepared for Impress Beauty Club by Vitrina Studio. This is not the official website.",
+  h1: "Come for the care, stay to unwind",
+  lead: "A stylish, spotless and cosy salon in Vake, where you are welcomed with coffee and every detail is looked after.",
+  rating: "240+ Google reviews", daily: "every day",
+  bookK: "Booking", bookH: "Book in 30 seconds",
+  bookLead: "Choose a service and a time that suits you. A ready message opens in WhatsApp and the front desk confirms your slot.",
+  q1: "Which service?", q2: "When suits you?", q3: "Your name",
+  svc: ["Manicure", "Pedicure", "Manicure and pedicure", "Nail design"],
+  when: ["Today", "Tomorrow", "This week", "Weekend"],
+  msg: (s, w, n) => `Hello! I would like to book: ${s}, ${w.toLowerCase()}.${n ? " Name: " + n + "." : ""}`,
+  pick: "Choose a service and a time", send: "Send on WhatsApp",
+  careK: "Care", careH: "What we offer",
+  s1: "Manicure", s1d: "Precise, clean work and colour that lasts.",
+  s2: "Pedicure", s2d: "Complete care in a calm space, never rushed.",
+  s3: "Cosmetics in the salon", s3d: "A selection of care products to keep the result at home.",
+  galK: "Our work", galH: "A gallery of your work", ph: "Your photo here",
+  sayK: "Guests", sayH: "What guests say",
+  r1: "The interior", r1d: "Guests often mention a beautiful, stylish and relaxing space.",
+  r2: "Cleanliness", r2d: "Everything is clean and well organised, which matters most in a salon.",
+  r3: "Attention", r3d: "Coffee, drinks and masters who listen to every request.",
+  visitH: "When and where", addrK: "Address", addr: "Building 2, Nino Ramishvili 2nd Dead End, Tbilisi", phoneK: "Phone", map: "Open in Maps",
+  days: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+  foot: "Impress Beauty Club · demo site"
  },
- "ru": {
-  "closed": "Закрыто",
-  "allday": "Круглосуточно",
-  "addrK": "АДРЕС",
-  "phoneK": "ТЕЛЕФОН",
-  "book": "Записаться в WhatsApp",
-  "call": "Позвонить",
-  "map": "Открыть на карте",
-  "menuH": "Услуги",
-  "menuNote": "Цены и полный список добавим вместе с владельцем.",
-  "visitH": "Когда и где",
-  "h1": "Салон красоты, где по-настоящему отдыхаешь",
-  "lead": "Маникюр, педикюр и уход в стильном и чистом пространстве на улице Нино Рамишвили.",
-  "score": "Средняя оценка, более 240 отзывов в Google",
-  "aboutH": "Забота в каждой детали",
-  "about1": "В Impress Beauty Club гостей встречают кофе и вниманием. Мастера слушают и не торопятся, чтобы результат был именно таким, как вы хотите.",
-  "about2": "Администратор найдёт время даже в загруженный день, а в салоне вас ждёт выбор качественной косметики.",
-  "d0": "Маникюр",
-  "d0s": "Классический и гель",
-  "d1": "Педикюр",
-  "d1s": "Полный уход",
-  "d2": "Дизайн ногтей",
-  "d2s": "Ваша идея или совет мастера",
-  "d3": "Косметика",
-  "d3s": "Средства ухода в салоне",
-  "addr": "Нино Рамишвили, 2-й тупик, здание 2, Тбилиси",
-  "foot": "Impress Beauty Club · демо-сайт",
-  "days": [
-   "Понедельник",
-   "Вторник",
-   "Среда",
-   "Четверг",
-   "Пятница",
-   "Суббота",
-   "Воскресенье"
-  ],
-  "demo": "Демо для Impress Beauty Club от Vitrina Studio. Это не официальный сайт."
+ ru: {
+  demo: "Демо для Impress Beauty Club от Vitrina Studio. Это не официальный сайт.",
+  h1: "Приходите за уходом, оставайтесь отдохнуть",
+  lead: "Стильный, чистый и уютный салон в Ваке, где встречают кофе и заботятся о каждой детали.",
+  rating: "240+ отзывов в Google", daily: "каждый день",
+  bookK: "Запись", bookH: "Запишитесь за 30 секунд",
+  bookLead: "Выберите услугу и удобное время. В WhatsApp откроется готовое сообщение, а администратор подтвердит запись.",
+  q1: "Какая услуга?", q2: "Когда удобно?", q3: "Ваше имя",
+  svc: ["Маникюр", "Педикюр", "Маникюр и педикюр", "Дизайн ногтей"],
+  when: ["Сегодня", "Завтра", "На этой неделе", "В выходные"],
+  msg: (s, w, n) => `Здравствуйте! Хочу записаться: ${s}, ${w.toLowerCase()}.${n ? " Имя: " + n + "." : ""}`,
+  pick: "Выберите услугу и время", send: "Отправить в WhatsApp",
+  careK: "Уход", careH: "Что мы предлагаем",
+  s1: "Маникюр", s1d: "Аккуратная работа и стойкий цвет.",
+  s2: "Педикюр", s2d: "Полный уход в спокойной обстановке, без спешки.",
+  s3: "Косметика в салоне", s3d: "Средства ухода, чтобы сохранить результат дома.",
+  galK: "Работы", galH: "Галерея ваших работ", ph: "Здесь ваше фото",
+  sayK: "Гости", sayH: "Что говорят гости",
+  r1: "Интерьер", r1d: "Гости часто отмечают красивое, стильное и расслабляющее пространство.",
+  r2: "Чистота", r2d: "Всё чисто и организовано — в салоне это главное.",
+  r3: "Внимание", r3d: "Кофе, напитки и мастера, которые слышат каждое пожелание.",
+  visitH: "Когда и где", addrK: "Адрес", addr: "Нино Рамишвили, 2-й тупик, здание 2, Тбилиси", phoneK: "Телефон", map: "Открыть на карте",
+  days: ["Понедельник","Вторник","Среда","Четверг","Пятница","Суббота","Воскресенье"],
+  foot: "Impress Beauty Club · демо-сайт"
  }
 };
-const HOURS = ["10:00\u201320:00", "10:00\u201320:00", "10:00\u201320:00", "10:00\u201320:00", "10:00\u201320:00", "10:00\u201320:00", "10:00\u201320:00"];
+let L = "ka", S = 0, W = 1;
+function chips(id, items, sel, cb) {
+  const box = document.getElementById(id);
+  box.innerHTML = items.map((t, i) => `<label><input type="radio" name="${id}" value="${i}" ${i === sel ? "checked" : ""}><span>${t}</span></label>`).join("");
+  box.querySelectorAll("input").forEach(inp => inp.addEventListener("change", () => { cb(+inp.value); update(); }));
+}
+function update() {
+  const t = T[L], n = document.getElementById("nm").value.trim();
+  const text = t.msg(t.svc[S], t.when[W], n);
+  document.getElementById("pv").textContent = text;
+  document.getElementById("go").href = "https://wa.me/" + PHONE + "?text=" + encodeURIComponent(text);
+}
 function setLang(l) {
-  const t = T[l];
+  L = l; const t = T[l];
   document.documentElement.lang = l;
-  document.querySelectorAll("[data-i]").forEach(el => { if (t[el.dataset.i] !== undefined) el.textContent = t[el.dataset.i]; });
+  document.querySelectorAll("[data-i]").forEach(el => { const v = t[el.dataset.i]; if (typeof v === "string") el.textContent = v; });
+  chips("svc", t.svc, S, v => S = v);
+  chips("when", t.when, W, v => W = v);
   const today = (new Date().getDay() + 6) % 7;
-  document.getElementById("hours").innerHTML = t.days.map((d, i) =>
-    `<tr class="${HOURS[i] ? "" : "closed"} ${i === today ? "today" : ""}"><td>${d}</td><td>${HOURS[i] === "24" ? t.allday : (HOURS[i] || t.closed)}</td></tr>`).join("");
+  document.getElementById("hours").innerHTML = t.days.map((d, i) => `<tr class="${i === today ? "today" : ""}"><td>${d}</td><td>10:00–20:00</td></tr>`).join("");
   document.querySelectorAll(".langs button").forEach(b => b.setAttribute("aria-pressed", b.dataset.l === l));
+  update();
 }
 document.querySelectorAll(".langs button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.l)));
+document.getElementById("nm").addEventListener("input", update);
 setLang("ka");
 </script>
 </body>
