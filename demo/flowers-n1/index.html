@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>FLOWERS N1 Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wdth,wght@62.5..100,500..900&family=Noto+Serif:wght@600;800&family=Noto+Sans+Georgian:wght@400;600;700&family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.6; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.demo { background: #111; color: #eee; font-size: 13px; text-align: center; padding: 8px 16px; font-family: "Noto Sans Georgian", "Noto Sans", sans-serif; }
+.wrap { max-width: 1060px; margin: 0 auto; padding: 0 22px; }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding: 18px 0; }
+.langs { display: flex; gap: 4px; }
+.langs button { font: 600 13px var(--body); background: transparent; color: inherit; border: 1px solid currentColor; opacity: .7; border-radius: 999px; padding: 5px 12px; cursor: pointer; }
+.langs button[aria-pressed="true"] { opacity: 1; background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+section { padding: 60px 0; }
+h2 { font-family: var(--display); font-size: clamp(26px, 3.6vw, 38px); line-height: 1.15; margin: 0 0 24px; text-wrap: balance; }
+.kick { font-size: 13px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; font-weight: 600; }
+.book { display: grid; grid-template-columns: .9fr 1.1fr; gap: 40px; align-items: start; }
+.book .lead { color: var(--muted); margin: 0; max-width: 28em; }
+.card { background: var(--card); color: var(--card-ink); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; display: grid; gap: 18px; }
+.card fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
+.card legend { font-weight: 700; font-size: 14.5px; margin-bottom: 8px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips label { position: relative; }
+.chips input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+.chips span { display: inline-block; padding: 9px 15px; border-radius: var(--chip-radius); border: 1px solid var(--line); font-size: 14.5px; cursor: pointer; background: transparent; }
+.chips input:checked + span { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.chips input:focus-visible + span { outline: 3px solid var(--accent); outline-offset: 2px; }
+.card input[type=text] { font: inherit; font-size: 16px; padding: 11px 14px; border-radius: 10px; border: 1px solid var(--line); background: transparent; color: inherit; width: 100%; }
+.send { display: inline-flex; justify-content: center; align-items: center; background: var(--accent); color: var(--on-accent); text-decoration: none; padding: 14px 20px; border-radius: var(--btn-radius); font-weight: 700; border: 0; }
+.ghost { display: inline-flex; justify-content: center; align-items: center; border: 2px solid currentColor; text-decoration: none; padding: 12px 18px; border-radius: var(--btn-radius); font-weight: 700; }
+.preview { font-size: 13.5px; opacity: .8; border: 1px dashed var(--line); border-radius: 10px; padding: 10px 12px; white-space: pre-line; }
+.visit { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+td { padding: 7px 0; border-bottom: 1px solid var(--line); }
+td:last-child { text-align: right; }
+tr.today td { font-weight: 700; }
+tr.closed td:last-child { color: var(--muted); }
+.addr .k { font-size: 12.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.addr .v { font-size: 18px; margin-bottom: 14px; }
+footer { padding: 22px 0; font-size: 14px; }
+@media (max-width: 820px) { .book, .visit { grid-template-columns: 1fr; } }
+
+:root { /* Layout idea: a florist's counter at night — deep stem green, petal blush, and a big "24/7" stamp, because they never close. Single theme by choice. */
+ --bg:#fbf4f2; --ink:#1f3329; --muted:#5d6f64; --accent:#c2456b; --on-accent:#fff; --line:#ead7d4; --card:#fff; --card-ink:#1f3329;
+ --radius:22px; --chip-radius:999px; --btn-radius:999px;
+ --display:"Noto Serif Georgian","Noto Serif",serif; --body:"Noto Sans Georgian","Noto Sans",sans-serif; color-scheme:light; }
+header.stem { background:#1f3329; color:#fbf4f2; position:relative; overflow:hidden; }
+header.stem::after { content:""; position:absolute; right:-90px; top:90px; width:360px; height:360px; border-radius:50%;
+  background: radial-gradient(circle at 50% 50%, #c2456b 0 18%, transparent 19%), radial-gradient(circle at 30% 40%, #e79aae 0 14%, transparent 15%), radial-gradient(circle at 68% 34%, #f3c6cf 0 12%, transparent 13%), radial-gradient(circle at 40% 70%, #e79aae 0 12%, transparent 13%), radial-gradient(circle at 66% 66%, #c2456b 0 10%, transparent 11%); opacity:.9; }
+header.stem .top { position:relative; z-index:2; }
+.brand { font-family:"Noto Serif",serif; font-weight:800; font-size:24px; letter-spacing:.08em; text-decoration:none; }
+.hero { padding:34px 0 64px; display:grid; grid-template-columns:1.2fr .8fr; gap:30px; align-items:center; position:relative; z-index:1; }
+.hero h1 { font-family:var(--display); font-variation-settings:"wdth" 85; font-weight:800; font-size:clamp(36px,5.6vw,62px); line-height:1.06; margin:0 0 18px; text-wrap:balance; }
+.hero p { color:#d6e2da; font-size:18.5px; max-width:30em; margin:0 0 24px; }
+.hero .ghost { color:#fbf4f2; }
+.stamp { justify-self:center; width:200px; aspect-ratio:1; border-radius:50%; border:3px dashed #f3c6cf; display:grid; place-content:center; text-align:center; transform:rotate(-8deg); }
+.stamp b { font-family:"Noto Serif",serif; font-size:56px; line-height:1; color:#f3c6cf; }
+.stamp small { font-size:14px; color:#d6e2da; }
+.occ-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+.occ-grid div { background:#fff; border:1px solid var(--line); border-radius:18px; padding:20px; }
+.occ-grid b { display:block; font-family:var(--display); font-size:19px; margin-bottom:4px; }
+.occ-grid span { color:var(--muted); font-size:15px; }
+.say { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.say div { border-left:3px solid var(--accent); padding:2px 0 2px 16px; }
+.say b { display:block; } .say span { color:var(--muted); font-size:15.5px; }
+footer { background:#1f3329; color:#d6e2da; }
+@media (max-width:820px){ .hero,.say{ grid-template-columns:1fr; } .occ-grid{ grid-template-columns:1fr 1fr; } .stamp{ width:150px; } header.stem::after{ width:220px; height:220px; } }
+
+</style>
+</head>
+<body>
+<div class="demo" data-i="demo"></div>
+
+<header class="stem">
+ <div class="wrap">
+  <div class="top"><a class="brand" href="#">FLOWERS N1</a>
+   <div class="langs" role="group" aria-label="Language"><button data-l="ka" aria-pressed="true">ქარ</button><button data-l="en" aria-pressed="false">EN</button><button data-l="ru" aria-pressed="false">RU</button></div></div>
+  <div class="hero">
+   <div><h1 data-i="h1"></h1><p data-i="lead"></p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="send" href="#order" data-i="cta"></a><a class="ghost" href="tel:+995551658282" data-i="call"></a></div></div>
+   <div class="stamp" aria-hidden="true"><b>24/7</b><small data-i="stamp"></small></div>
+  </div>
+ </div>
+</header>
+<main class="wrap">
+ <section>
+  <p class="kick" data-i="oK2"></p><h2 data-i="oH2"></h2>
+  <div class="occ-grid">
+   <div><b data-i="c1"></b><span data-i="c1d"></span></div><div><b data-i="c2"></b><span data-i="c2d"></span></div>
+   <div><b data-i="c3"></b><span data-i="c3d"></span></div><div><b data-i="c4"></b><span data-i="c4d"></span></div>
+  </div>
+ </section>
+ <section id="order">
+  <div class="book">
+   <div><p class="kick" data-i="oK"></p><h2 data-i="oH"></h2><p class="lead" data-i="oLead"></p></div>
+   <form class="card" onsubmit="return false">
+    <fieldset><legend data-i="q1"></legend><div class="chips" id="occ"></div></fieldset>
+    <fieldset><legend data-i="q2"></legend><div class="chips" id="style"></div></fieldset>
+    <fieldset><legend data-i="q3"></legend><div class="chips" id="when"></div></fieldset>
+    <fieldset><legend><label for="nm" data-i="q4"></label></legend><input type="text" id="nm"></fieldset>
+    <div class="preview" id="pv" aria-live="polite"></div>
+    <a class="send" id="go" href="#" target="_blank" rel="noopener" data-i="send"></a>
+   </form>
+  </div>
+ </section>
+ <section>
+  <p class="kick" data-i="sK"></p><h2 data-i="sH"></h2>
+  <div class="say"><div><b data-i="r1"></b><span data-i="r1d"></span></div><div><b data-i="r2"></b><span data-i="r2d"></span></div><div><b data-i="r3"></b><span data-i="r3d"></span></div></div>
+ </section>
+ <section>
+  <h2 data-i="visitH"></h2>
+  <div class="visit"><table aria-label="Hours"><tbody id="hours"></tbody></table>
+   <div class="addr"><div class="k" data-i="addrK"></div><div class="v" data-i="addr"></div><div class="k" data-i="phoneK"></div><div class="v">+995 551 65 82 82</div>
+   <a class="ghost" href="https://www.google.com/maps/search/?api=1&query=FLOWERS+N1+2+Ketevan+Tsamebuli+Ave+Tbilisi" target="_blank" rel="noopener" data-i="map"></a></div></div>
+ </section>
+</main>
+<footer><div class="wrap" data-i="foot"></div></footer>
+
+<script>
+const PHONE = "995551658282";
+const T = {ka:{days:["ორშაბათი","სამშაბათი","ოთხშაბათი","ხუთშაბათი","პარასკევი","შაბათი","კვირა"], closed:"დაკეტილია", allday:"24 საათი",
+ demo:"დემო: მომზადებულია FLOWERS N1-ისთვის Vitrina Studio-ს მიერ. ეს ოფიციალური საიტი არ არის.",
+ h1:"ახალი ყვავილები, დღე და ღამე", lead:"ყვავილების მაღაზია ავლაბარში, რომელიც არასდროს იკეტება. ლამაზი თაიგულები და მიტანა დროულად.",
+ cta:"თაიგულის შეკვეთა", call:"დარეკვა", stamp:"ყოველთვის ღიაა",
+ oK2:"შემთხვევები", oH2:"რა ამბავს აღნიშნავთ?",
+ c1:"დაბადების დღე", c1d:"ფერადი და მხიარული", c2:"სიყვარული", c2d:"ვარდები და ნაზი ტონები", c3:"ბოდიში", c3d:"როცა სიტყვები არ კმარა", c4:"მილოცვა", c4d:"ახალი სამსახური, ბავშვი, დიპლომი",
+ oK:"შეკვეთა", oH:"თაიგული 30 წამში", oLead:"აირჩიეთ შემთხვევა, სტილი და დრო. WhatsApp-ში მზა შეტყობინება გაიხსნება, მისამართსა და ბიუჯეტს იქ მიუთითებთ.",
+ q1:"რა შემთხვევაა?", q2:"რა სტილი?", q3:"როდის მივიტანოთ?", q4:"ბარათზე რა დავწეროთ? (არასავალდებულო)",
+ occ:["დაბადების დღე","სიყვარული","ბოდიში","მილოცვა"], style:["ფერადი","პასტელი","თეთრი","მხოლოდ ვარდები"], when:["რაც შეიძლება მალე","დღეს საღამოს","ხვალ"],
+ msg:(a,b,c,n)=>`გამარჯობა! მინდა თაიგული: ${a.toLowerCase()}, სტილი: ${b.toLowerCase()}, მიტანა: ${c.toLowerCase()}.${n?" ბარათზე: «"+n+"».":""} მისამართს და ბიუჯეტს ახლავე მოგწერთ.`, send:"გაგზავნა WhatsApp-ში",
+ sK:"სტუმრები", sH:"რას ამბობენ ჩვენზე", r1:"სიახლე", r1d:"ლამაზი, ახალი ყვავილები და ულამაზესი თაიგულები.", r2:"მიტანა", r2d:"დროულად და ზუსტად ისე, როგორც შეუკვეთეს.", r3:"ფლორისტები", r3d:"თბილი და კეთილი გუნდი, რომელიც დაგეხმარებათ არჩევაში.",
+ visitH:"როდის და სად", addrK:"მისამართი", addr:"ქეთევან წამებულის გამზ. 2, ავლაბარი, თბილისი", phoneK:"ტელეფონი", map:"რუკაზე ნახვა", foot:"FLOWERS N1 · დემო საიტი"},
+en:{days:["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], closed:"Closed", allday:"Open 24 hours",
+ demo:"Demo prepared for FLOWERS N1 by Vitrina Studio. This is not the official website.",
+ h1:"Fresh flowers, day and night", lead:"A flower shop in Avlabari that never closes. Beautiful bouquets, delivered on time.",
+ cta:"Order a bouquet", call:"Call", stamp:"always open",
+ oK2:"Occasions", oH2:"What are you celebrating?",
+ c1:"Birthday", c1d:"Bright and cheerful", c2:"Love", c2d:"Roses and soft tones", c3:"Sorry", c3d:"When words are not enough", c4:"Congratulations", c4d:"New job, new baby, graduation",
+ oK:"Order", oH:"A bouquet in 30 seconds", oLead:"Choose the occasion, style and time. A ready message opens in WhatsApp, where you add the address and budget.",
+ q1:"What's the occasion?", q2:"Which style?", q3:"When should we deliver?", q4:"Card message (optional)",
+ occ:["Birthday","Love","Sorry","Congratulations"], style:["Bright","Pastel","White","Roses only"], when:["As soon as possible","This evening","Tomorrow"],
+ msg:(a,b,c,n)=>`Hello! I'd like a bouquet: ${a.toLowerCase()}, style: ${b.toLowerCase()}, delivery: ${c.toLowerCase()}.${n?" Card: «"+n+"».":""} I'll send the address and budget now.`, send:"Send on WhatsApp",
+ sK:"Guests", sH:"What people say", r1:"Freshness", r1d:"Beautiful, fresh flowers and stunning bouquets.", r2:"Delivery", r2d:"On time and exactly as ordered.", r3:"Florists", r3d:"A warm, kind team that helps you choose.",
+ visitH:"When and where", addrK:"Address", addr:"2 Ketevan Tsamebuli Ave, Avlabari, Tbilisi", phoneK:"Phone", map:"Open in Maps", foot:"FLOWERS N1 · demo site"},
+ru:{days:["Понедельник","Вторник","Среда","Четверг","Пятница","Суббота","Воскресенье"], closed:"Выходной", allday:"Круглосуточно",
+ demo:"Демо для FLOWERS N1 от Vitrina Studio. Это не официальный сайт.",
+ h1:"Свежие цветы днём и ночью", lead:"Цветочный магазин в Авлабари, который никогда не закрывается. Красивые букеты и доставка вовремя.",
+ cta:"Заказать букет", call:"Позвонить", stamp:"всегда открыто",
+ oK2:"Поводы", oH2:"Что вы празднуете?",
+ c1:"День рождения", c1d:"Ярко и весело", c2:"Любовь", c2d:"Розы и нежные тона", c3:"Извинение", c3d:"Когда слов недостаточно", c4:"Поздравление", c4d:"Новая работа, малыш, диплом",
+ oK:"Заказ", oH:"Букет за 30 секунд", oLead:"Выберите повод, стиль и время. В WhatsApp откроется готовое сообщение — там укажете адрес и бюджет.",
+ q1:"Какой повод?", q2:"Какой стиль?", q3:"Когда доставить?", q4:"Текст открытки (необязательно)",
+ occ:["День рождения","Любовь","Извинение","Поздравление"], style:["Яркий","Пастельный","Белый","Только розы"], when:["Как можно скорее","Сегодня вечером","Завтра"],
+ msg:(a,b,c,n)=>`Здравствуйте! Хочу букет: ${a.toLowerCase()}, стиль: ${b.toLowerCase()}, доставка: ${c.toLowerCase()}.${n?" Открытка: «"+n+"».":""} Адрес и бюджет пришлю сейчас.`, send:"Отправить в WhatsApp",
+ sK:"Гости", sH:"Что о нас говорят", r1:"Свежесть", r1d:"Красивые свежие цветы и потрясающие букеты.", r2:"Доставка", r2d:"Вовремя и точно как заказано.", r3:"Флористы", r3d:"Тёплая и добрая команда, которая поможет с выбором.",
+ visitH:"Когда и где", addrK:"Адрес", addr:"пр. Кетеван Цамебули, 2, Авлабари, Тбилиси", phoneK:"Телефон", map:"Открыть на карте", foot:"FLOWERS N1 · демо-сайт"}};
+const HOURS = ["24", "24", "24", "24", "24", "24", "24"];
+const GROUPS = ["occ", "style", "when"];
+let L = "ka"; const SEL = {};
+function chips(id, items) {
+  const box = document.getElementById(id); if (!box) return;
+  if (SEL[id] === undefined) SEL[id] = 0;
+  box.innerHTML = items.map((t, i) => `<label><input type="radio" name="${id}" value="${i}" ${i === SEL[id] ? "checked" : ""}><span>${t}</span></label>`).join("");
+  box.querySelectorAll("input").forEach(inp => inp.addEventListener("change", () => { SEL[id] = +inp.value; update(); }));
+}
+function update() {
+  const t = T[L]; const go = document.getElementById("go"); if (!go) return;
+  const vals = GROUPS.map(g => t[g][SEL[g] || 0]);
+  const extra = document.getElementById("nm") ? document.getElementById("nm").value.trim() : "";
+  const text = t.msg(...vals, extra);
+  document.getElementById("pv").textContent = text;
+  go.href = "https://wa.me/" + PHONE + "?text=" + encodeURIComponent(text);
+}
+function setLang(l) {
+  L = l; const t = T[l]; document.documentElement.lang = l;
+  document.querySelectorAll("[data-i]").forEach(el => { const v = t[el.dataset.i]; if (typeof v === "string") el.textContent = v; });
+  GROUPS.forEach(g => chips(g, t[g]));
+  const today = (new Date().getDay() + 6) % 7;
+  const hb = document.getElementById("hours");
+  if (hb) hb.innerHTML = t.days.map((d, i) => `<tr class="${HOURS[i] ? "" : "closed"} ${i === today ? "today" : ""}"><td>${d}</td><td>${HOURS[i] === "24" ? t.allday : (HOURS[i] || t.closed)}</td></tr>`).join("");
+  document.querySelectorAll(".langs button").forEach(b => b.setAttribute("aria-pressed", b.dataset.l === l));
+  if (window.extra) window.extra(t, l);
+  update();
+}
+document.querySelectorAll(".langs button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.l)));
+const nm = document.getElementById("nm"); if (nm) nm.addEventListener("input", update);
+
+setLang("ka");
+</script>
+</body>
+</html>

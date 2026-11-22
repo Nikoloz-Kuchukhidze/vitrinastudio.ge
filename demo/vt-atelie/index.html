@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>V.T Atelie Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wdth,wght@62.5..100,500..900&family=Noto+Serif:ital,wght@1,600&family=Noto+Sans+Georgian:wght@400;600;700&family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.6; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.demo { background: #111; color: #eee; font-size: 13px; text-align: center; padding: 8px 16px; font-family: "Noto Sans Georgian", "Noto Sans", sans-serif; }
+.wrap { max-width: 1060px; margin: 0 auto; padding: 0 22px; }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding: 18px 0; }
+.langs { display: flex; gap: 4px; }
+.langs button { font: 600 13px var(--body); background: transparent; color: inherit; border: 1px solid currentColor; opacity: .7; border-radius: 999px; padding: 5px 12px; cursor: pointer; }
+.langs button[aria-pressed="true"] { opacity: 1; background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+section { padding: 60px 0; }
+h2 { font-family: var(--display); font-size: clamp(26px, 3.6vw, 38px); line-height: 1.15; margin: 0 0 24px; text-wrap: balance; }
+.kick { font-size: 13px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; font-weight: 600; }
+.book { display: grid; grid-template-columns: .9fr 1.1fr; gap: 40px; align-items: start; }
+.book .lead { color: var(--muted); margin: 0; max-width: 28em; }
+.card { background: var(--card); color: var(--card-ink); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; display: grid; gap: 18px; }
+.card fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
+.card legend { font-weight: 700; font-size: 14.5px; margin-bottom: 8px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips label { position: relative; }
+.chips input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+.chips span { display: inline-block; padding: 9px 15px; border-radius: var(--chip-radius); border: 1px solid var(--line); font-size: 14.5px; cursor: pointer; background: transparent; }
+.chips input:checked + span { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.chips input:focus-visible + span { outline: 3px solid var(--accent); outline-offset: 2px; }
+.card input[type=text] { font: inherit; font-size: 16px; padding: 11px 14px; border-radius: 10px; border: 1px solid var(--line); background: transparent; color: inherit; width: 100%; }
+.send { display: inline-flex; justify-content: center; align-items: center; background: var(--accent); color: var(--on-accent); text-decoration: none; padding: 14px 20px; border-radius: var(--btn-radius); font-weight: 700; border: 0; }
+.ghost { display: inline-flex; justify-content: center; align-items: center; border: 2px solid currentColor; text-decoration: none; padding: 12px 18px; border-radius: var(--btn-radius); font-weight: 700; }
+.preview { font-size: 13.5px; opacity: .8; border: 1px dashed var(--line); border-radius: 10px; padding: 10px 12px; white-space: pre-line; }
+.visit { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+td { padding: 7px 0; border-bottom: 1px solid var(--line); }
+td:last-child { text-align: right; }
+tr.today td { font-weight: 700; }
+tr.closed td:last-child { color: var(--muted); }
+.addr .k { font-size: 12.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.addr .v { font-size: 18px; margin-bottom: 14px; }
+footer { padding: 22px 0; font-size: 14px; }
+@media (max-width: 820px) { .book, .visit { grid-template-columns: 1fr; } }
+
+:root { /* Layout idea: a tailor's bench — deep indigo cloth, a yellow tape measure running across the page, chalk-white type. Single theme by choice. */
+ --bg:#f5f2ea; --ink:#1d2433; --muted:#5d6577; --accent:#1f2f5c; --on-accent:#fff; --line:#d8d2c3; --card:#fff; --card-ink:#1d2433;
+ --radius:4px; --chip-radius:3px; --btn-radius:3px;
+ --display:"Noto Serif Georgian","Noto Serif",serif; --body:"Noto Sans Georgian","Noto Sans",sans-serif; color-scheme:light; }
+header.cloth { background:#1f2f5c; color:#f5f2ea; background-image: repeating-linear-gradient(45deg, rgba(255,255,255,.03) 0 2px, transparent 2px 6px); }
+.tape { height:46px; background:
+  repeating-linear-gradient(90deg, #1d2433 0 1px, transparent 1px 10px) 0 0/100% 12px no-repeat,
+  repeating-linear-gradient(90deg, #1d2433 0 2px, transparent 2px 50px) 0 0/100% 22px no-repeat,
+  #f2c230; border-top:2px solid #1d2433; border-bottom:2px solid #1d2433; position:relative; }
+.tape span { position:absolute; bottom:4px; font:700 12px "Noto Sans",sans-serif; color:#1d2433; }
+.brand { font-family:"Noto Serif",serif; font-style:italic; font-weight:600; font-size:26px; text-decoration:none; }
+.hero { padding:38px 0 60px; display:grid; grid-template-columns:1.15fr .85fr; gap:40px; align-items:end; }
+.hero h1 { font-family:var(--display); font-variation-settings:"wdth" 82; font-weight:800; font-size:clamp(36px,5.6vw,62px); line-height:1.06; margin:0 0 18px; text-wrap:balance; }
+.hero p { color:#d4d9e6; font-size:18.5px; max-width:30em; margin:0 0 24px; }
+.hero .send { background:#f2c230; color:#1d2433; }
+.hero .ghost { color:#f5f2ea; }
+.stat { border:1px dashed rgba(245,242,234,.5); padding:22px; border-radius:4px; display:grid; gap:4px; }
+.stat b { font-family:var(--display); font-size:54px; line-height:1; color:#f2c230; }
+.stat small { color:#d4d9e6; }
+.steps { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; counter-reset:s; }
+.step { background:#fff; border:1px solid var(--line); padding:22px; border-radius:4px; position:relative; }
+.step::before { counter-increment:s; content:counter(s); font-family:var(--display); font-weight:900; font-size:40px; color:#f2c230; -webkit-text-stroke:1px #1d2433; display:block; line-height:1; margin-bottom:8px; }
+.step b { display:block; font-size:18px; margin-bottom:4px; }
+.step span { color:var(--muted); font-size:15.5px; }
+.works { display:grid; grid-template-columns:repeat(2,1fr); gap:0 40px; }
+.works div { border-bottom:1px solid var(--line); padding:14px 0; display:flex; justify-content:space-between; gap:12px; }
+.works i { font-style:normal; color:var(--muted); font-size:14px; text-align:right; }
+.card .send { background:#1f2f5c; }
+footer { background:#1f2f5c; color:#d4d9e6; }
+@media (max-width:820px){ .hero,.steps,.works{ grid-template-columns:1fr; } }
+
+</style>
+</head>
+<body>
+<div class="demo" data-i="demo"></div>
+
+<header class="cloth">
+ <div class="wrap">
+  <div class="top"><a class="brand" href="#">V.T Atelie</a>
+   <div class="langs" role="group" aria-label="Language"><button data-l="ka" aria-pressed="true">ქარ</button><button data-l="en" aria-pressed="false">EN</button><button data-l="ru" aria-pressed="false">RU</button></div></div>
+  <div class="hero">
+   <div><h1 data-i="h1"></h1><p data-i="lead"></p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="send" href="#order" data-i="cta"></a><a class="ghost" href="tel:+995555429644" data-i="call"></a></div></div>
+   <div class="stat"><b>5.0</b><small data-i="rating"></small><small data-i="daily"></small></div>
+  </div>
+ </div>
+ <div class="tape" aria-hidden="true"><span style="left:2%">0</span><span style="left:25%">10</span><span style="left:50%">20</span><span style="left:75%">30</span></div>
+</header>
+<main class="wrap">
+ <section>
+  <p class="kick" data-i="howK"></p><h2 data-i="howH"></h2>
+  <div class="steps">
+   <div class="step"><b data-i="h1s"></b><span data-i="h1d"></span></div>
+   <div class="step"><b data-i="h2s"></b><span data-i="h2d"></span></div>
+   <div class="step"><b data-i="h3s"></b><span data-i="h3d"></span></div>
+  </div>
+ </section>
+ <section>
+  <p class="kick" data-i="wK"></p><h2 data-i="wH"></h2>
+  <div class="works">
+   <div><span data-i="x1"></span><i data-i="x1t"></i></div><div><span data-i="x2"></span><i data-i="x2t"></i></div>
+   <div><span data-i="x3"></span><i data-i="x3t"></i></div><div><span data-i="x4"></span><i data-i="x4t"></i></div>
+  </div>
+ </section>
+ <section id="order">
+  <div class="book">
+   <div><p class="kick" data-i="oK"></p><h2 data-i="oH"></h2><p class="lead" data-i="oLead"></p></div>
+   <form class="card" onsubmit="return false">
+    <fieldset><legend data-i="q1"></legend><div class="chips" id="item"></div></fieldset>
+    <fieldset><legend data-i="q2"></legend><div class="chips" id="job"></div></fieldset>
+    <fieldset><legend data-i="q3"></legend><div class="chips" id="speed"></div></fieldset>
+    <div class="preview" id="pv" aria-live="polite"></div>
+    <a class="send" id="go" href="#" target="_blank" rel="noopener" data-i="send"></a>
+   </form>
+  </div>
+ </section>
+ <section>
+  <h2 data-i="visitH"></h2>
+  <div class="visit"><table aria-label="Hours"><tbody id="hours"></tbody></table>
+   <div class="addr"><div class="k" data-i="addrK"></div><div class="v" data-i="addr"></div><div class="k" data-i="phoneK"></div><div class="v">+995 555 42 96 44</div>
+   <a class="ghost" href="https://www.google.com/maps/search/?api=1&query=V.T+Atelie+44%2F2+Zhiuli+Shartava+St+Tbilisi" target="_blank" rel="noopener" data-i="map"></a></div></div>
+ </section>
+</main>
+<footer><div class="wrap" data-i="foot"></div></footer>
+
+<script>
+const PHONE = "995555429644";
+const T = {ka:{days:["ორშაბათი","სამშაბათი","ოთხშაბათი","ხუთშაბათი","პარასკევი","შაბათი","კვირა"], closed:"დაკეტილია", allday:"24 საათი",
+ demo:"დემო: მომზადებულია V.T Atelie-სთვის Vitrina Studio-ს მიერ. ეს ოფიციალური საიტი არ არის.",
+ h1:"ტანსაცმელი, რომელიც ზუსტად თქვენზეა მორგებული", lead:"შესწორება, შემოკლება და შეკერვა შარტავას ქუჩაზე. ხშირად იმავე დღეს, ზოგჯერ ერთ საათშიც.",
+ cta:"შეკვეთა WhatsApp-ით", call:"დარეკვა", rating:"Google-ზე 100-ზე მეტი შეფასება", daily:"ყოველდღე 9:00–21:00",
+ howK:"როგორ ვმუშაობთ", howH:"სამი მარტივი ნაბიჯი",
+ h1s:"მოგვწერეთ", h1d:"გამოგვიგზავნეთ ფოტო და მოკლედ აღწერეთ, რა გჭირდებათ. ჩვეულებრივ წუთებში გპასუხობთ.", h2s:"მოიტანეთ", h2d:"ადგილზე ერთად ვზომავთ და ვთანხმდებით ყველა დეტალზე.", h3s:"წაიღეთ", h3d:"მზადყოფნისას შეგატყობინებთ. მცირე სამუშაოები ხშირად რამდენიმე საათში სრულდება.",
+ wK:"ნამუშევრები", wH:"რას გვთხოვენ ყველაზე ხშირად",
+ x1:"ჯინსის შემოკლება და დავიწროება", x1t:"ხშირად იმავე დღეს", x2:"ქვედაბოლოს და კაბის მორგება", x2t:"ზომაზე", x3:"პიჯაკის სახელოები და სილუეტი", x3t:"მორგებით", x4:"ინდივიდუალური შეკვეთა", x4t:"თქვენი იდეით",
+ oK:"შეკვეთა", oH:"აღწერეთ 20 წამში", oLead:"აირჩიეთ ნივთი, სამუშაო და ვადა. WhatsApp-ში მზა შეტყობინება გაიხსნება. ფოტოს დამატება იქვე შეგიძლიათ.",
+ q1:"რა ნივთია?", q2:"რა გჭირდებათ?", q3:"როდის გჭირდებათ?",
+ item:["ჯინსი / შარვალი","კაბა / ქვედაბოლო","პიჯაკი / ქურთუკი","სხვა"], job:["შემოკლება","დავიწროება","შეკეთება","ახლის შეკერვა"], speed:["დღესვე","ამ კვირაში","არ მეჩქარება"],
+ msg:(a,b,c)=>`გამარჯობა! ${a}: ${b.toLowerCase()}. ვადა: ${c.toLowerCase()}. ფოტოს ახლავე გამოგიგზავნით.`, send:"გაგზავნა WhatsApp-ში",
+ visitH:"როდის და სად", addrK:"მისამართი", addr:"ჟიული შარტავას ქ. 44/2, თბილისი", phoneK:"ტელეფონი", map:"რუკაზე ნახვა", foot:"V.T Atelie · დემო საიტი"},
+en:{days:["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], closed:"Closed", allday:"Open 24 hours",
+ demo:"Demo prepared for V.T Atelie by Vitrina Studio. This is not the official website.",
+ h1:"Clothes that fit you exactly", lead:"Alterations, hemming and tailoring on Shartava Street. Often the same day, sometimes within an hour.",
+ cta:"Order on WhatsApp", call:"Call", rating:"100+ Google reviews", daily:"Every day 9:00–21:00",
+ howK:"How it works", howH:"Three simple steps",
+ h1s:"Message us", h1d:"Send a photo and a short note. We usually reply within minutes.", h2s:"Drop it off", h2d:"We measure together and agree every detail on the spot.", h3s:"Pick it up", h3d:"We let you know when it's ready. Small jobs are often done in a few hours.",
+ wK:"Our work", wH:"What people ask for most",
+ x1:"Shortening and tapering jeans", x1t:"often same day", x2:"Fitting skirts and dresses", x2t:"to measure", x3:"Jacket sleeves and silhouette", x3t:"with a fitting", x4:"Custom pieces", x4t:"your idea",
+ oK:"Order", oH:"Describe it in 20 seconds", oLead:"Choose the item, the job and the timing. A ready message opens in WhatsApp, where you can attach a photo.",
+ q1:"What item?", q2:"What do you need?", q3:"When do you need it?",
+ item:["Jeans / trousers","Dress / skirt","Jacket / coat","Something else"], job:["Shorten","Take in","Repair","Make new"], speed:["Today","This week","No rush"],
+ msg:(a,b,c)=>`Hello! ${a}: ${b.toLowerCase()}. Timing: ${c.toLowerCase()}. I'll send a photo now.`, send:"Send on WhatsApp",
+ visitH:"When and where", addrK:"Address", addr:"44/2 Zhiuli Shartava St, Tbilisi", phoneK:"Phone", map:"Open in Maps", foot:"V.T Atelie · demo site"},
+ru:{days:["Понедельник","Вторник","Среда","Четверг","Пятница","Суббота","Воскресенье"], closed:"Выходной", allday:"Круглосуточно",
+ demo:"Демо для V.T Atelie от Vitrina Studio. Это не официальный сайт.",
+ h1:"Одежда, которая сидит идеально", lead:"Подгонка, укорачивание и пошив на улице Шартава. Часто в тот же день, иногда за час.",
+ cta:"Заказать в WhatsApp", call:"Позвонить", rating:"Более 100 отзывов в Google", daily:"Каждый день 9:00–21:00",
+ howK:"Как это работает", howH:"Три простых шага",
+ h1s:"Напишите нам", h1d:"Пришлите фото и коротко опишите задачу. Обычно отвечаем за минуты.", h2s:"Принесите", h2d:"На месте снимем мерки и обсудим все детали.", h3s:"Заберите", h3d:"Сообщим, когда будет готово. Мелкие работы часто — за несколько часов.",
+ wK:"Работы", wH:"Что заказывают чаще всего",
+ x1:"Укоротить и заузить джинсы", x1t:"часто в тот же день", x2:"Подгонка юбок и платьев", x2t:"по меркам", x3:"Рукава и силуэт пиджака", x3t:"с примеркой", x4:"Индивидуальный пошив", x4t:"по вашей идее",
+ oK:"Заказ", oH:"Опишите за 20 секунд", oLead:"Выберите вещь, работу и срок. В WhatsApp откроется готовое сообщение, туда же можно приложить фото.",
+ q1:"Что за вещь?", q2:"Что нужно?", q3:"Когда нужно?",
+ item:["Джинсы / брюки","Платье / юбка","Пиджак / куртка","Другое"], job:["Укоротить","Заузить","Починить","Сшить новое"], speed:["Сегодня","На этой неделе","Не срочно"],
+ msg:(a,b,c)=>`Здравствуйте! ${a}: ${b.toLowerCase()}. Срок: ${c.toLowerCase()}. Сейчас пришлю фото.`, send:"Отправить в WhatsApp",
+ visitH:"Когда и где", addrK:"Адрес", addr:"ул. Жиули Шартава, 44/2, Тбилиси", phoneK:"Телефон", map:"Открыть на карте", foot:"V.T Atelie · демо-сайт"}};
+const HOURS = ["9:00\u201321:00", "9:00\u201321:00", "9:00\u201321:00", "9:00\u201321:00", "9:00\u201321:00", "9:00\u201321:00", "9:00\u201321:00"];
+const GROUPS = ["item", "job", "speed"];
+let L = "ka"; const SEL = {};
+function chips(id, items) {
+  const box = document.getElementById(id); if (!box) return;
+  if (SEL[id] === undefined) SEL[id] = 0;
+  box.innerHTML = items.map((t, i) => `<label><input type="radio" name="${id}" value="${i}" ${i === SEL[id] ? "checked" : ""}><span>${t}</span></label>`).join("");
+  box.querySelectorAll("input").forEach(inp => inp.addEventListener("change", () => { SEL[id] = +inp.value; update(); }));
+}
+function update() {
+  const t = T[L]; const go = document.getElementById("go"); if (!go) return;
+  const vals = GROUPS.map(g => t[g][SEL[g] || 0]);
+  const extra = document.getElementById("nm") ? document.getElementById("nm").value.trim() : "";
+  const text = t.msg(...vals, extra);
+  document.getElementById("pv").textContent = text;
+  go.href = "https://wa.me/" + PHONE + "?text=" + encodeURIComponent(text);
+}
+function setLang(l) {
+  L = l; const t = T[l]; document.documentElement.lang = l;
+  document.querySelectorAll("[data-i]").forEach(el => { const v = t[el.dataset.i]; if (typeof v === "string") el.textContent = v; });
+  GROUPS.forEach(g => chips(g, t[g]));
+  const today = (new Date().getDay() + 6) % 7;
+  const hb = document.getElementById("hours");
+  if (hb) hb.innerHTML = t.days.map((d, i) => `<tr class="${HOURS[i] ? "" : "closed"} ${i === today ? "today" : ""}"><td>${d}</td><td>${HOURS[i] === "24" ? t.allday : (HOURS[i] || t.closed)}</td></tr>`).join("");
+  document.querySelectorAll(".langs button").forEach(b => b.setAttribute("aria-pressed", b.dataset.l === l));
+  if (window.extra) window.extra(t, l);
+  update();
+}
+document.querySelectorAll(".langs button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.l)));
+const nm = document.getElementById("nm"); if (nm) nm.addEventListener("input", update);
+
+setLang("ka");
+</script>
+</body>
+</html>
