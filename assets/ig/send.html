@@ -1,6 +1,0 @@
-<!DOCTYPE html><meta charset="utf-8"><meta name="robots" content="noindex"><title>send</title>
-<script>
-(async()=>{const f=new URLSearchParams(location.search).get('f');
-const r=await fetch(f+'?x='+Date.now()); const buf=await r.arrayBuffer();
-(window.opener||window.parent).postMessage({vitrina:1,name:f,buf},'*',[buf]); setTimeout(()=>window.close(),1500);})();
-</script>
