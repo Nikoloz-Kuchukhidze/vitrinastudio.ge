@@ -73,6 +73,7 @@ header.stem .top { position:relative; z-index:2; }
 .say div { border-left:3px solid var(--accent); padding:2px 0 2px 16px; }
 .say b { display:block; } .say span { color:var(--muted); font-size:15.5px; }
 footer { background:#1f3329; color:#d6e2da; }
+@media (max-width:560px){ header.stem::after{ display:none; } .stamp{ width:130px; } }
 @media (max-width:820px){ .hero,.say{ grid-template-columns:1fr; } .occ-grid{ grid-template-columns:1fr 1fr; } .stamp{ width:150px; } header.stem::after{ width:220px; height:220px; } }
 
 </style>
