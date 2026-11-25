@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Groom Room Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;600;800&family=Nunito:wght@600;800;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.6; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.demo { background: #111; color: #eee; font-size: 13px; text-align: center; padding: 8px 16px; font-family: "Noto Sans Georgian", "Noto Sans", sans-serif; }
+.wrap { max-width: 1060px; margin: 0 auto; padding: 0 22px; }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding: 18px 0; }
+.langs { display: flex; gap: 4px; }
+.langs button { font: 600 13px var(--body); background: transparent; color: inherit; border: 1px solid currentColor; opacity: .7; border-radius: 999px; padding: 5px 12px; cursor: pointer; }
+.langs button[aria-pressed="true"] { opacity: 1; background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+section { padding: 60px 0; }
+h2 { font-family: var(--display); font-size: clamp(26px, 3.6vw, 38px); line-height: 1.15; margin: 0 0 24px; text-wrap: balance; }
+.kick { font-size: 13px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; font-weight: 600; }
+.book { display: grid; grid-template-columns: .9fr 1.1fr; gap: 40px; align-items: start; }
+.book .lead { color: var(--muted); margin: 0; max-width: 28em; }
+.card { background: var(--card); color: var(--card-ink); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; display: grid; gap: 18px; }
+.card fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
+.card legend { font-weight: 700; font-size: 14.5px; margin-bottom: 8px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips label { position: relative; }
+.chips input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+.chips span { display: inline-block; padding: 9px 15px; border-radius: var(--chip-radius); border: 1px solid var(--line); font-size: 14.5px; cursor: pointer; background: transparent; }
+.chips input:checked + span { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.chips input:focus-visible + span { outline: 3px solid var(--accent); outline-offset: 2px; }
+.card input[type=text] { font: inherit; font-size: 16px; padding: 11px 14px; border-radius: 10px; border: 1px solid var(--line); background: transparent; color: inherit; width: 100%; }
+.send { display: inline-flex; justify-content: center; align-items: center; background: var(--accent); color: var(--on-accent); text-decoration: none; padding: 14px 20px; border-radius: var(--btn-radius); font-weight: 700; border: 0; }
+.ghost { display: inline-flex; justify-content: center; align-items: center; border: 2px solid currentColor; text-decoration: none; padding: 12px 18px; border-radius: var(--btn-radius); font-weight: 700; }
+.preview { font-size: 13.5px; opacity: .8; border: 1px dashed var(--line); border-radius: 10px; padding: 10px 12px; white-space: pre-line; }
+.visit { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+td { padding: 7px 0; border-bottom: 1px solid var(--line); }
+td:last-child { text-align: right; }
+tr.today td { font-weight: 700; }
+tr.closed td:last-child { color: var(--muted); }
+.addr .k { font-size: 12.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.addr .v { font-size: 18px; margin-bottom: 14px; }
+footer { padding: 22px 0; font-size: 14px; }
+@media (max-width: 820px) { .book, .visit { grid-template-columns: 1fr; } }
+
+:root { /* Layout idea: a bright, bubbly bath for dogs — mint water, soap bubbles, paw prints; friendly rounded type. */
+ --bg:#f2faf8; --ink:#173a36; --muted:#4d6f6a; --accent:#ff7a59; --on-accent:#fff; --line:#d5ece7; --card:#fff; --card-ink:#173a36;
+ --radius:28px; --chip-radius:999px; --btn-radius:999px;
+ --display:"Nunito","Noto Sans Georgian",sans-serif; --body:"Noto Sans Georgian","Nunito",sans-serif; color-scheme:light; }
+header.bath { background:#bfe8df; position:relative; overflow:hidden; }
+header.bath::after { content:""; position:absolute; inset:0; pointer-events:none;
+ background: radial-gradient(circle at 85% 30%, rgba(255,255,255,.75) 0 34px, transparent 35px), radial-gradient(circle at 92% 55%, rgba(255,255,255,.6) 0 22px, transparent 23px), radial-gradient(circle at 78% 70%, rgba(255,255,255,.55) 0 46px, transparent 47px), radial-gradient(circle at 70% 18%, rgba(255,255,255,.5) 0 14px, transparent 15px); }
+.brand { font-family:"Nunito",sans-serif; font-weight:900; font-size:26px; text-decoration:none; }
+.brand span { color:var(--accent); }
+.hero { padding:28px 0 64px; max-width:640px; position:relative; z-index:1; }
+.hero h1 { font-family:var(--display); font-weight:900; font-size:clamp(34px,5.2vw,58px); line-height:1.06; margin:0 0 16px; text-wrap:balance; }
+.hero p { color:var(--muted); font-size:18.5px; margin:0 0 22px; max-width:30em; }
+.hero .ghost { color:var(--ink); }
+.stat { display:inline-flex; gap:10px; align-items:center; background:#fff; border-radius:999px; padding:8px 16px; font-weight:800; margin-bottom:18px; }
+.stat b { color:var(--accent); font-size:20px; }
+.svc { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+.svc div { background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:22px; }
+.svc i { font-style:normal; font-size:30px; } .svc b { display:block; font-family:var(--display); font-size:20px; margin:6px 0 4px; } .svc span { color:var(--muted); font-size:15px; }
+.say { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.say div { background:#fff; border-radius:22px; padding:20px; border:1px dashed #9fd3c8; }
+.say b { display:block; margin-bottom:4px; } .say span { color:var(--muted); font-size:15px; }
+footer { background:#173a36; color:#cfe9e3; }
+@media (max-width:820px){ .svc{ grid-template-columns:1fr 1fr; } .say{ grid-template-columns:1fr; } }
+@media (max-width:560px){ .svc{ grid-template-columns:1fr; } .svc div{ display:grid; grid-template-columns:auto 1fr; column-gap:14px; padding:16px 18px; } .svc i{ grid-row:span 2; } .svc b{ margin:0; } header.bath::after{ opacity:.45; } }
+
+</style>
+</head>
+<body>
+<div class="demo" data-i="demo"></div>
+
+<header class="bath">
+ <div class="wrap">
+  <div class="top"><a class="brand" href="#">Groom <span>Room</span></a>
+   <div class="langs" role="group" aria-label="Language"><button data-l="ka" aria-pressed="true">ქარ</button><button data-l="en" aria-pressed="false">EN</button><button data-l="ru" aria-pressed="false">RU</button></div></div>
+  <div class="hero"><div class="stat"><b>5.0</b><span data-i="stat"></span></div><h1 data-i="h1"></h1><p data-i="lead"></p>
+   <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="send" href="#book" data-i="cta"></a><a class="ghost" href="tel:+995591532000" data-i="call"></a></div></div>
+ </div>
+</header>
+<main class="wrap">
+ <section><p class="kick" data-i="sK"></p><h2 data-i="sH"></h2>
+  <div class="svc"><div><i>🛁</i><b data-i="s1"></b><span data-i="s1d"></span></div><div><i>✂️</i><b data-i="s2"></b><span data-i="s2d"></span></div><div><i>🐾</i><b data-i="s3"></b><span data-i="s3d"></span></div><div><i>🐱</i><b data-i="s4"></b><span data-i="s4d"></span></div></div>
+  <p class="note" data-i="sNote" style="color:var(--muted);font-size:14px;margin-top:10px"></p>
+ </section>
+ <section id="book"><div class="book">
+  <div><p class="kick" data-i="bK"></p><h2 data-i="bH"></h2><p class="lead" data-i="bLead"></p></div>
+  <form class="card" onsubmit="return false">
+   <fieldset><legend data-i="q1"></legend><div class="chips" id="pet"></div></fieldset>
+   <fieldset><legend data-i="q2"></legend><div class="chips" id="size"></div></fieldset>
+   <fieldset><legend data-i="q3"></legend><div class="chips" id="svc"></div></fieldset>
+   <fieldset><legend data-i="q4"></legend><div class="chips" id="when"></div></fieldset>
+   <fieldset><legend><label for="nm" data-i="q5"></label></legend><input type="text" id="nm"></fieldset>
+   <div class="preview" id="pv" aria-live="polite"></div>
+   <a class="send" id="go" href="#" target="_blank" rel="noopener" data-i="send"></a>
+  </form></div></section>
+ <section><p class="kick" data-i="rK"></p><h2 data-i="rH"></h2>
+  <div class="say"><div><b data-i="r1"></b><span data-i="r1d"></span></div><div><b data-i="r2"></b><span data-i="r2d"></span></div><div><b data-i="r3"></b><span data-i="r3d"></span></div></div></section>
+ <section><h2 data-i="visitH"></h2>
+  <div class="visit"><table aria-label="Hours"><tbody id="hours"></tbody></table>
+   <div class="addr"><div class="k" data-i="addrK"></div><div class="v" data-i="addr"></div><div class="k" data-i="phoneK"></div><div class="v">+995 591 53 20 00</div>
+   <a class="ghost" href="https://www.google.com/maps/search/?api=1&query=Groom+Room+10+Givi+Kartozia+Tbilisi" target="_blank" rel="noopener" data-i="map"></a></div></div></section>
+</main>
+<footer><div class="wrap" data-i="foot"></div></footer>
+
+<script>
+const PHONE = "995591532000";
+const T = {ka:{days:["ორშაბათი","სამშაბათი","ოთხშაბათი","ხუთშაბათი","პარასკევი","შაბათი","კვირა"], closed:"დაკეტილია", allday:"24 საათი",
+ demo:"დემო: მომზადებულია Groom Room-ისთვის Vitrina Studio-ს მიერ. ეს ოფიციალური საიტი არ არის.",
+ stat:"Google-ზე, 130-ზე მეტი შეფასება", h1:"ძაღლებისა და კატების გრუმინგი", lead:"გრუმინგ სალონი გივი ქართოზიას ქუჩაზე. ყოველდღე 9:00-დან 22:00-მდე.",
+ cta:"ჩაწერა", call:"დარეკვა",
+ sK:"სერვისები", sH:"რას ვაკეთებთ", s1:"დაბანა", s1d:"დაბანა და გაშრობა.", s2:"შეჭრა", s2d:"სრული გრუმინგი და ჯიშის მიხედვით შეჭრა.", s3:"ჰიგიენა", s3d:"ფრჩხილები, ყურები, თვალები.", s4:"კატებიც", s4d:"დაგვიკავშირდით და დავაზუსტებთ.",
+ sNote:"ზუსტ ფასს ძაღლის ზომისა და ბეწვის მიხედვით გეტყვით.",
+ bK:"ჩაწერა", bH:"ჩაწერე ოთხფეხა მეგობარი", bLead:"აირჩიე რამდენიმე პარამეტრი და WhatsApp-ში მზა შეტყობინება გაიხსნება.",
+ q1:"ვინ არის?", q2:"ზომა", q3:"რა გჭირდებათ?", q4:"როდის?", q5:"შინაური ცხოველის სახელი",
+ pet:["ძაღლი","კატა"], size:["პატარა","საშუალო","დიდი"], svc:["სრული გრუმინგი","დაბანა","ჰიგიენა"], when:["დღეს","ხვალ","ამ კვირაში"],
+ msg:(a,b,c,d,n)=>`გამარჯობა! მინდა ჩაწერა: ${a.toLowerCase()}, ${b.toLowerCase()}, ${c.toLowerCase()}. დრო: ${d.toLowerCase()}.${n?" სახელი: "+n+".":""}`, send:"გაგზავნა WhatsApp-ში",
+ rK:"სტუმრები", rH:"რას წერენ ჩვენზე", r1:"ნაზი მოპყრობა", r1d:"ძაღლები მშვიდად და ბედნიერად ბრუნდებიან.", r2:"შედეგი", r2d:"სუფთა, ლამაზად შეჭრილი და მოვლილი.", r3:"გუნდი", r3d:"მეგობრული და პროფესიონალი.",
+ visitH:"როდის და სად", addrK:"მისამართი", addr:"გივი ქართოზიას ქ. 10, თბილისი", phoneK:"ტელეფონი", map:"რუკაზე ნახვა", foot:"Groom Room · დემო საიტი"},
+en:{days:["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], closed:"Closed", allday:"Open 24 hours",
+ demo:"Demo prepared for Groom Room by Vitrina Studio. This is not the official website.",
+ stat:"on Google, 130+ reviews", h1:"Grooming for dogs and cats", lead:"A grooming salon on Givi Kartozia Street. Daily from 9:00 to 22:00.",
+ cta:"Book", call:"Call",
+ sK:"Services", sH:"What we do", s1:"Bath", s1d:"Bath and blow-dry.", s2:"Haircut", s2d:"Full grooming and breed cuts.", s3:"Hygiene", s3d:"Nails, ears, eyes.", s4:"Cats too", s4d:"Message us to check.",
+ sNote:"We'll tell you the exact price based on size and coat.",
+ bK:"Booking", bH:"Book your four-legged friend", bLead:"Pick a few options and a ready message opens in WhatsApp.",
+ q1:"Who is it?", q2:"Size", q3:"What do you need?", q4:"When?", q5:"Pet's name",
+ pet:["Dog","Cat"], size:["Small","Medium","Large"], svc:["Full grooming","Bath","Hygiene"], when:["Today","Tomorrow","This week"],
+ msg:(a,b,c,d,n)=>`Hello! I'd like to book: ${a.toLowerCase()}, ${b.toLowerCase()}, ${c.toLowerCase()}. When: ${d.toLowerCase()}.${n?" Name: "+n+".":""}`, send:"Send on WhatsApp",
+ rK:"Guests", rH:"What people say", r1:"Gentle care", r1d:"Dogs come back calm and happy.", r2:"Results", r2d:"Clean, nicely trimmed, well groomed.", r3:"Team", r3d:"Friendly and professional.",
+ visitH:"When and where", addrK:"Address", addr:"10 Givi Kartozia St, Tbilisi", phoneK:"Phone", map:"Open in Maps", foot:"Groom Room · demo site"},
+ru:{days:["Понедельник","Вторник","Среда","Четверг","Пятница","Суббота","Воскресенье"], closed:"Выходной", allday:"Круглосуточно",
+ demo:"Демо для Groom Room от Vitrina Studio. Это не официальный сайт.",
+ stat:"в Google, более 130 отзывов", h1:"Груминг для собак и кошек", lead:"Груминг-салон на улице Гиви Картозиа. Ежедневно с 9:00 до 22:00.",
+ cta:"Записаться", call:"Позвонить",
+ sK:"Услуги", sH:"Что мы делаем", s1:"Мытьё", s1d:"Мытьё и сушка.", s2:"Стрижка", s2d:"Полный груминг и породная стрижка.", s3:"Гигиена", s3d:"Когти, уши, глаза.", s4:"И кошки", s4d:"Напишите, уточним.",
+ sNote:"Точную цену скажем по размеру и шерсти.",
+ bK:"Запись", bH:"Запишите четвероногого друга", bLead:"Выберите несколько параметров — в WhatsApp откроется готовое сообщение.",
+ q1:"Кто?", q2:"Размер", q3:"Что нужно?", q4:"Когда?", q5:"Кличка",
+ pet:["Собака","Кошка"], size:["Маленькая","Средняя","Большая"], svc:["Полный груминг","Мытьё","Гигиена"], when:["Сегодня","Завтра","На этой неделе"],
+ msg:(a,b,c,d,n)=>`Здравствуйте! Хочу записаться: ${a.toLowerCase()}, ${b.toLowerCase()}, ${c.toLowerCase()}. Когда: ${d.toLowerCase()}.${n?" Кличка: "+n+".":""}`, send:"Отправить в WhatsApp",
+ rK:"Гости", rH:"Что о нас пишут", r1:"Бережно", r1d:"Собаки возвращаются спокойными и счастливыми.", r2:"Результат", r2d:"Чисто, аккуратно, ухоженно.", r3:"Команда", r3d:"Дружелюбно и профессионально.",
+ visitH:"Когда и где", addrK:"Адрес", addr:"ул. Гиви Картозиа, 10, Тбилиси", phoneK:"Телефон", map:"Открыть на карте", foot:"Groom Room · демо-сайт"}};
+const HOURS = ["9:00\u201322:00", "9:00\u201322:00", "9:00\u201322:00", "9:00\u201322:00", "9:00\u201322:00", "9:00\u201322:00", "9:00\u201322:00"];
+const GROUPS = ["pet", "size", "svc", "when"];
+let L = "ka"; const SEL = {};
+function chips(id, items) {
+  const box = document.getElementById(id); if (!box) return;
+  if (SEL[id] === undefined) SEL[id] = 0;
+  box.innerHTML = items.map((t, i) => `<label><input type="radio" name="${id}" value="${i}" ${i === SEL[id] ? "checked" : ""}><span>${t}</span></label>`).join("");
+  box.querySelectorAll("input").forEach(inp => inp.addEventListener("change", () => { SEL[id] = +inp.value; update(); }));
+}
+function update() {
+  const t = T[L]; const go = document.getElementById("go"); if (!go) return;
+  const vals = GROUPS.map(g => t[g][SEL[g] || 0]);
+  const extra = document.getElementById("nm") ? document.getElementById("nm").value.trim() : "";
+  const text = t.msg(...vals, extra);
+  document.getElementById("pv").textContent = text;
+  go.href = "https://wa.me/" + PHONE + "?text=" + encodeURIComponent(text);
+}
+function setLang(l) {
+  L = l; const t = T[l]; document.documentElement.lang = l;
+  document.querySelectorAll("[data-i]").forEach(el => { const v = t[el.dataset.i]; if (typeof v === "string") el.textContent = v; });
+  GROUPS.forEach(g => chips(g, t[g]));
+  const today = (new Date().getDay() + 6) % 7;
+  const hb = document.getElementById("hours");
+  if (hb) hb.innerHTML = t.days.map((d, i) => `<tr class="${HOURS[i] ? "" : "closed"} ${i === today ? "today" : ""}"><td>${d}</td><td>${HOURS[i] === "24" ? t.allday : (HOURS[i] || t.closed)}</td></tr>`).join("");
+  document.querySelectorAll(".langs button").forEach(b => b.setAttribute("aria-pressed", b.dataset.l === l));
+  if (window.extra) window.extra(t, l);
+  update();
+}
+document.querySelectorAll(".langs button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.l)));
+const nm = document.getElementById("nm"); if (nm) nm.addEventListener("input", update);
+
+setLang("ka");
+</script>
+</body>
+</html>
