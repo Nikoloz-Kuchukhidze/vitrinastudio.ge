@@ -55,8 +55,11 @@ footer { padding: 22px 0; font-size: 14px; }
  --display:"Noto Serif Georgian",serif; --body:"Noto Sans Georgian","Noto Sans",sans-serif; color-scheme:light; }
 header.wh { background:#2f4a2b; color:#f7f4ea; position:relative; overflow:hidden; }
 header.wh::before { content:""; position:absolute; inset:0 0 auto 0; height:34px; background:repeating-linear-gradient(90deg,#4f7a3f 0 18px,#3a5c30 18px 40px); opacity:.9; }
-.vine { position:absolute; right:6%; top:70px; display:grid; grid-template-columns:repeat(4,26px); gap:6px; transform:rotate(8deg); }
-.vine i { width:26px; height:26px; border-radius:50%; background:#8d4d91; box-shadow:inset -4px -4px 0 #6b3a6e; } .vine i:nth-child(n+9){ margin-left:16px; } .vine i:nth-child(n+12){ margin-left:30px; }
+.vine { position:absolute; right:8%; top:150px; display:flex; flex-direction:column; align-items:center; gap:3px; transform:rotate(-8deg); }
+.vine .stem { width:6px; height:26px; background:#8a6a3a; border-radius:3px; position:relative; margin-bottom:2px; }
+.vine .stem::after { content:""; position:absolute; left:4px; top:2px; width:46px; height:30px; background:#6d9a4f; border-radius:0 30px 0 30px; transform:rotate(-18deg); }
+.vine .row { display:flex; gap:3px; }
+.vine i { width:30px; height:30px; border-radius:50%; background:radial-gradient(circle at 35% 30%,#b77bbb 0 18%,#8d4d91 40%,#5e2f62 100%); display:block; }
 .brand { font-family:"Noto Serif Georgian",serif; font-weight:700; font-size:21px; text-decoration:none; }
 .top { position:relative; z-index:1; padding-top:44px !important; }
 .hero .kick { color:#c8e0a8; } .hero p { color:#dbe5d2; } .hero .send { background:#c8e0a8; color:#233021; } .hero .ghost { color:#f7f4ea; }
@@ -78,7 +81,7 @@ footer { background:#2f4a2b; color:#dbe5d2; }
 <div class="demo" data-i="demo"></div>
 <header class="wh"><div class="wrap" style="position:relative"><div class="top"><a class="brand" href="#">თევდორაშვილების მარანი</a><div class="langs" role="group" aria-label="Language"><button data-l="ka" aria-pressed="true">ქარ</button><button data-l="en" aria-pressed="false">EN</button><button data-l="ru" aria-pressed="false">RU</button></div></div>
 <div class="hero"><p class="kick" data-i="hK"></p><h1 data-i="h1"></h1><p data-i="lead"></p>
-<div style="display:flex;gap:10px;flex-wrap:wrap"><a class="send" href="#book" data-i="cta"></a><a class="ghost" href="tel:+995598228707" data-i="call"></a></div></div><div class="vine" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></header>
+<div style="display:flex;gap:10px;flex-wrap:wrap"><a class="send" href="#book" data-i="cta"></a><a class="ghost" href="tel:+995598228707" data-i="call"></a></div></div><div class="vine" aria-hidden="true"><div class="stem"></div><div class="row"><i></i><i></i><i></i><i></i><i></i></div><div class="row"><i></i><i></i><i></i><i></i></div><div class="row"><i></i><i></i><i></i><i></i><i></i></div><div class="row"><i></i><i></i><i></i><i></i></div><div class="row"><i></i><i></i><i></i></div><div class="row"><i></i><i></i></div><div class="row"><i></i></div></div></div></header>
 <main class="wrap"><section><p class="kick" data-i="aK"></p><h2 data-i="aH"></h2><div class="facts"><div><b data-i="a1"></b><span data-i="a1d"></span></div><div><b data-i="a2"></b><span data-i="a2d"></span></div><div><b data-i="a3"></b><span data-i="a3d"></span></div></div></section>
 <section><p class="kick" data-i="gK"></p><h2 data-i="gH"></h2><div class="grapes"><span data-i="g1"></span><span data-i="g2"></span><span data-i="g3"></span></div></section><section id="book"><div class="book"><div><p class="kick" data-i="bK"></p><h2 data-i="bH"></h2><p class="lead" data-i="bLead"></p></div>
 <form class="card" onsubmit="return false"><fieldset><legend data-i="q1"></legend><div class="chips" id="what"></div></fieldset><fieldset><legend data-i="q2"></legend><div class="chips" id="ppl"></div></fieldset><fieldset><legend data-i="q3"></legend><div class="chips" id="when"></div></fieldset><fieldset><legend><label for="nm" data-i="q4"></label></legend><input type="text" id="nm"></fieldset>
