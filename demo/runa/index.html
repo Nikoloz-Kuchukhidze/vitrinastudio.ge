@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Runa · რუნა Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;600;800;900&family=Syne:wght@600;800&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.6; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.demo { background: #111; color: #eee; font-size: 13px; text-align: center; padding: 8px 16px; font-family: "Noto Sans Georgian", "Noto Sans", sans-serif; }
+.wrap { max-width: 1060px; margin: 0 auto; padding: 0 22px; }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding: 18px 0; }
+.langs { display: flex; gap: 4px; }
+.langs button { font: 600 13px var(--body); background: transparent; color: inherit; border: 1px solid currentColor; opacity: .7; border-radius: 999px; padding: 5px 12px; cursor: pointer; }
+.langs button[aria-pressed="true"] { opacity: 1; background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+section { padding: 60px 0; }
+h2 { font-family: var(--display); font-size: clamp(26px, 3.6vw, 38px); line-height: 1.15; margin: 0 0 24px; text-wrap: balance; }
+.kick { font-size: 13px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; font-weight: 600; }
+.book { display: grid; grid-template-columns: .9fr 1.1fr; gap: 40px; align-items: start; }
+.book .lead { color: var(--muted); margin: 0; max-width: 28em; }
+.card { background: var(--card); color: var(--card-ink); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; display: grid; gap: 18px; }
+.card fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
+.card legend { font-weight: 700; font-size: 14.5px; margin-bottom: 8px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips label { position: relative; }
+.chips input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+.chips span { display: inline-block; padding: 9px 15px; border-radius: var(--chip-radius); border: 1px solid var(--line); font-size: 14.5px; cursor: pointer; background: transparent; }
+.chips input:checked + span { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.chips input:focus-visible + span { outline: 3px solid var(--accent); outline-offset: 2px; }
+.card input[type=text] { font: inherit; font-size: 16px; padding: 11px 14px; border-radius: 10px; border: 1px solid var(--line); background: transparent; color: inherit; width: 100%; }
+.send { display: inline-flex; justify-content: center; align-items: center; background: var(--accent); color: var(--on-accent); text-decoration: none; padding: 14px 20px; border-radius: var(--btn-radius); font-weight: 700; border: 0; }
+.ghost { display: inline-flex; justify-content: center; align-items: center; border: 2px solid currentColor; text-decoration: none; padding: 12px 18px; border-radius: var(--btn-radius); font-weight: 700; }
+.preview { font-size: 13.5px; opacity: .8; border: 1px dashed var(--line); border-radius: 10px; padding: 10px 12px; white-space: pre-line; }
+.visit { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+td { padding: 7px 0; border-bottom: 1px solid var(--line); }
+td:last-child { text-align: right; }
+tr.today td { font-weight: 700; }
+tr.closed td:last-child { color: var(--muted); }
+.addr .k { font-size: 12.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.addr .v { font-size: 18px; margin-bottom: 14px; }
+footer { padding: 22px 0; font-size: 14px; }
+@media (max-width: 820px) { .book, .visit { grid-template-columns: 1fr; } }
+
+:root { /* Layout idea: Runa's orange dot — one big sun-orange circle, cocktail-hour contrast of ink and orange. */
+ --bg:#fbf6ef; --ink:#1d1a17; --muted:#655d55; --accent:#f26b1d; --on-accent:#fff; --line:#eadfce; --card:#fff; --card-ink:#1d1a17;
+ --radius:14px; --chip-radius:999px; --btn-radius:999px;
+ --display:"Syne","Noto Sans Georgian",sans-serif; --body:"Noto Sans Georgian",sans-serif; color-scheme:light; }
+:lang(ka) { --display:"Noto Sans Georgian",sans-serif; }
+header.dot { background:#1d1a17; color:#fbf6ef; position:relative; overflow:hidden; }
+header.dot::after { content:""; position:absolute; right:-80px; top:40px; width:340px; height:340px; border-radius:50%; background:#f26b1d; }
+.brand { font-family:"Syne",sans-serif; font-weight:800; font-size:28px; text-decoration:none; }
+.hero { padding:28px 0 90px; max-width:580px; position:relative; z-index:1; }
+.hero .kick { color:#f9a46e; }
+.hero h1 { font-family:var(--display); font-weight:900; font-size:clamp(34px,5.4vw,58px); line-height:1.05; margin:0 0 16px; text-wrap:balance; }
+.hero p { color:#d8cfc4; font-size:18.5px; margin:0 0 22px; } .hero .ghost { color:#fbf6ef; }
+.three { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.three div { padding:22px; border-radius:var(--radius); background:var(--card); border:1px solid var(--line); }
+.three b { display:block; font-family:var(--display); font-size:22px; margin-bottom:6px; } .three span { color:var(--muted); font-size:15.5px; }
+.three div:nth-child(2){ background:#f26b1d; color:#fff; border-color:#f26b1d; } .three div:nth-child(2) span{ color:#fff3ea; }
+footer { background:#1d1a17; color:#d8cfc4; }
+@media (max-width:820px){ .three{ grid-template-columns:1fr; } header.dot::after{ display:none; } .top{ position:relative; z-index:1; } }
+
+</style>
+</head>
+<body>
+<div class="demo" data-i="demo"></div>
+<header class="dot"><div class="wrap"><div class="top"><a class="brand" href="#">Runa</a><div class="langs" role="group" aria-label="Language"><button data-l="ka" aria-pressed="true">ქარ</button><button data-l="en" aria-pressed="false">EN</button><button data-l="ru" aria-pressed="false">RU</button></div></div>
+<div class="hero"><p class="kick" data-i="hK"></p><h1 data-i="h1"></h1><p data-i="lead"></p>
+<div style="display:flex;gap:10px;flex-wrap:wrap"><a class="send" href="#book" data-i="cta"></a><a class="ghost" href="tel:+995597094177" data-i="call"></a></div></div></div></header>
+<main class="wrap"><section><p class="kick" data-i="mK"></p><h2 data-i="mH"></h2><div class="three"><div><b data-i="m1"></b><span data-i="m1d"></span></div><div><b data-i="m2"></b><span data-i="m2d"></span></div><div><b data-i="m3"></b><span data-i="m3d"></span></div></div></section><section id="book"><div class="book"><div><p class="kick" data-i="bK"></p><h2 data-i="bH"></h2><p class="lead" data-i="bLead"></p></div>
+<form class="card" onsubmit="return false"><fieldset><legend data-i="q1"></legend><div class="chips" id="what"></div></fieldset><fieldset><legend data-i="q2"></legend><div class="chips" id="ppl"></div></fieldset><fieldset><legend data-i="q3"></legend><div class="chips" id="when"></div></fieldset><fieldset><legend><label for="nm" data-i="q4"></label></legend><input type="text" id="nm"></fieldset>
+<div class="preview" id="pv" aria-live="polite"></div><a class="send" id="go" href="#" target="_blank" rel="noopener" data-i="send"></a></form></div></section><section><h2 data-i="visitH"></h2><div class="visit"><div class="addr"><div class="k" data-i="whenK"></div><div class="v" data-i="whenV"></div></div><div class="addr"><div class="k" data-i="addrK"></div><div class="v" data-i="addr"></div><div class="k" data-i="phoneK"></div><div class="v">+995 597 09 41 77</div>
+<a class="ghost" href="https://www.google.com/maps/search/?api=1&query=Runa+23+Tamar+mepe+street+Kutaisi" target="_blank" rel="noopener" data-i="map"></a></div></div></section></main><footer><div class="wrap" data-i="foot"></div></footer>
+<script>
+const PHONE = "995597094177";
+const T = {ka:{days:["ორშაბათი","სამშაბათი","ოთხშაბათი","ხუთშაბათი","პარასკევი","შაბათი","კვირა"], closed:"დაკეტილია", allday:"24 საათი",visitH:"როდის და სად", addrK:"მისამართი", phoneK:"ტელეფონი", map:"რუკაზე ნახვა", send:"გაგზავნა WhatsApp-ში", q4:"სახელი",demo:"დემო: მომზადებულია Runa-სთვის Vitrina Studio-ს მიერ. ეს ოფიციალური საიტი არ არის.",
+ hK:"ქუთაისი · თამარ მეფის 23", h1:"ყავა დილით, კოქტეილი საღამოს", lead:"მყუდრო ადგილი ქუთაისში: ახალი ყავა, საავტორო კოქტეილები და ჯანსაღი წასახემსებელი.",
+ cta:"მაგიდის დაჯავშნა", call:"დარეკვა",
+ mK:"მენიუ", mH:"რას აქებენ სტუმრები", m1:"ყავა", m1d:"დილის 9 საათიდან.", m2:"საავტორო კოქტეილები", m2d:"საღამოსთვის.", m3:"თაფლის ტორტი", m3d:"და ვეგეტარიანული სენდვიჩი.",
+ bK:"დაჯავშნა", bH:"დაჯავშნე მაგიდა", bLead:"აირჩიე, რისთვის მოდიხარ, რამდენი ხართ და როდის. WhatsApp-ში მზა შეტყობინება გაიხსნება.",
+ q1:"რისთვის?", q2:"რამდენი ხართ?", q3:"როდის?",
+ what:["ყავაზე","კოქტეილებზე"], ppl:["1–2","3–4","5+"], when:["დღეს","ხვალ","შაბათ-კვირას"],
+ msg:(a,b,c,n)=>`გამარჯობა! მინდა მაგიდის დაჯავშნა ${a}. ვართ: ${b}. დრო: ${c.toLowerCase()}.${n?" სახელი: "+n+".":""}`,
+ whenK:"სამუშაო საათები", whenV:"დილის 9:00-დან", addr:"თამარ მეფის ქ. 23, ქუთაისი", foot:"Runa · დემო საიტი"},
+en:{days:["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], closed:"Closed", allday:"Open 24 hours",visitH:"When and where", addrK:"Address", phoneK:"Phone", map:"Open in Maps", send:"Send on WhatsApp", q4:"Name",demo:"Demo prepared for Runa by Vitrina Studio. This is not the official website.",
+ hK:"Kutaisi · 23 Tamar Mepe St", h1:"Coffee in the morning, cocktails at night", lead:"A cosy spot in Kutaisi: fresh coffee, artisan cocktails and healthy bites.",
+ cta:"Book a table", call:"Call",
+ mK:"Menu", mH:"What guests praise", m1:"Coffee", m1d:"From 9 in the morning.", m2:"Artisan cocktails", m2d:"For the evening.", m3:"Honey cake", m3d:"And the veg sandwich.",
+ bK:"Booking", bH:"Book a table", bLead:"Choose what for, how many and when. A ready message opens in WhatsApp.",
+ q1:"What for?", q2:"How many?", q3:"When?",
+ what:["for coffee","for cocktails"], ppl:["1–2","3–4","5+"], when:["Today","Tomorrow","Weekend"],
+ msg:(a,b,c,n)=>`Hello! I'd like to book a table ${a}. People: ${b}. When: ${c.toLowerCase()}.${n?" Name: "+n+".":""}`,
+ whenK:"Opening hours", whenV:"From 9:00", addr:"23 Tamar Mepe St, Kutaisi", foot:"Runa · demo site"},
+ru:{days:["Понедельник","Вторник","Среда","Четверг","Пятница","Суббота","Воскресенье"], closed:"Выходной", allday:"Круглосуточно",visitH:"Когда и где", addrK:"Адрес", phoneK:"Телефон", map:"Открыть на карте", send:"Отправить в WhatsApp", q4:"Имя",demo:"Демо для Runa от Vitrina Studio. Это не официальный сайт.",
+ hK:"Кутаиси · ул. Тамар Мепе, 23", h1:"Кофе утром, коктейли вечером", lead:"Уютное место в Кутаиси: свежий кофе, авторские коктейли и полезные перекусы.",
+ cta:"Забронировать стол", call:"Позвонить",
+ mK:"Меню", mH:"Что хвалят гости", m1:"Кофе", m1d:"С 9 утра.", m2:"Авторские коктейли", m2d:"Для вечера.", m3:"Медовик", m3d:"И вегетарианский сэндвич.",
+ bK:"Бронирование", bH:"Забронируйте стол", bLead:"Выберите, на что, сколько вас и когда. В WhatsApp откроется готовое сообщение.",
+ q1:"На что?", q2:"Сколько вас?", q3:"Когда?",
+ what:["на кофе","на коктейли"], ppl:["1–2","3–4","5+"], when:["Сегодня","Завтра","На выходных"],
+ msg:(a,b,c,n)=>`Здравствуйте! Хочу забронировать стол ${a}. Нас: ${b}. Когда: ${c.toLowerCase()}.${n?" Имя: "+n+".":""}`,
+ whenK:"Часы работы", whenV:"С 9:00", addr:"ул. Тамар Мепе, 23, Кутаиси", foot:"Runa · демо-сайт"}};
+const HOURS = [null, null, null, null, null, null, null];
+const GROUPS = ["what", "ppl", "when"];
+let L = "ka"; const SEL = {};
+function chips(id, items) {
+  const box = document.getElementById(id); if (!box) return;
+  if (SEL[id] === undefined) SEL[id] = 0;
+  box.innerHTML = items.map((t, i) => `<label><input type="radio" name="${id}" value="${i}" ${i === SEL[id] ? "checked" : ""}><span>${t}</span></label>`).join("");
+  box.querySelectorAll("input").forEach(inp => inp.addEventListener("change", () => { SEL[id] = +inp.value; update(); }));
+}
+function update() {
+  const t = T[L]; const go = document.getElementById("go"); if (!go) return;
+  const vals = GROUPS.map(g => t[g][SEL[g] || 0]);
+  const extra = document.getElementById("nm") ? document.getElementById("nm").value.trim() : "";
+  const text = t.msg(...vals, extra);
+  document.getElementById("pv").textContent = text;
+  go.href = "https://wa.me/" + PHONE + "?text=" + encodeURIComponent(text);
+}
+function setLang(l) {
+  L = l; const t = T[l]; document.documentElement.lang = l;
+  document.querySelectorAll("[data-i]").forEach(el => { const v = t[el.dataset.i]; if (typeof v === "string") el.textContent = v; });
+  GROUPS.forEach(g => chips(g, t[g]));
+  const today = (new Date().getDay() + 6) % 7;
+  const hb = document.getElementById("hours");
+  if (hb) hb.innerHTML = t.days.map((d, i) => `<tr class="${HOURS[i] ? "" : "closed"} ${i === today ? "today" : ""}"><td>${d}</td><td>${HOURS[i] === "24" ? t.allday : (HOURS[i] || t.closed)}</td></tr>`).join("");
+  document.querySelectorAll(".langs button").forEach(b => b.setAttribute("aria-pressed", b.dataset.l === l));
+  if (window.extra) window.extra(t, l);
+  update();
+}
+document.querySelectorAll(".langs button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.l)));
+const nm = document.getElementById("nm"); if (nm) nm.addEventListener("input", update);
+
+setLang("ka");
+</script>
+</body>
+</html>
